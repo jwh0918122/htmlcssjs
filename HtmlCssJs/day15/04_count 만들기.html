@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>count 만들기</title>
+</head>
+<style>
+    @font-face {
+        font-family: jua;
+        src: url(/font/Jua-Regular.ttf);
+    }
+    body{
+        font-family: jua;
+    }
+    button{
+        width: 200px;
+        height: 30px;
+        margin-bottom: 10px;
+        border-radius: 15px;
+        border: none;
+        font-size: 25px;
+        
+    }
+    button:first-child{
+        background-color: pink;
+    }
+    button:nth-child(3){
+        background-color: skyblue;
+    }
+    h1{
+        width: 200px;
+        height: 30px;
+        margin-left: 30px;
+    }
+</style>
+<body>
+
+    <button type="button" id="pBtn">+</button><br>
+    <button type="button" id="mBtn">-</button>
+    <h1 id="countPrint"></h1>
+    <!-- 
+        button을 2개 준비
+        + / -
+        0 => h1   (최소값 : 0)
+         -->
+
+    
+    <script>
+        let cnt=0;
+
+        //pBtn
+        document.getElementById('pBtn').addEventListener('click',()=>{
+        document.getElementById('countPrint').innerText=``; //초기화
+        cnt++;
+        document.getElementById('countPrint').innerText+=`count : ${cnt}`;
+        })
+        
+        //mBtn
+        document.getElementById('mBtn').addEventListener('click',()=>{
+        document.getElementById('countPrint').innerText=``; //초기화
+
+        if(cnt>0){  //최소값 : 0
+            cnt--;
+        }else{
+            cnt=0;
+        }
+        document.getElementById('countPrint').innerText+=`count : ${cnt}`;
+        })
+
+    </script>
+
+    <!-- <script>   //강사님
+        const num = document.getElementById('countPrint');
+        console.log(countPrint);
+        const pBtn = document.getElementById('pBtn')
+        const mBtn = document.getElementById('mBtn')
+        
+        pBtn.addEventListener('click',()=>{
+            let currVal = Number(countPrint.innerText);
+            console.log(currVal);
+            countPrint.innerText = currVal+1;
+        })
+        
+        mBtn.addEventListener('click',()=>{
+        let currVal = Number(countPrint.innerText);
+        if(currVal<=0){
+                countPrint.innerText=0;
+            }else{
+                countPrint.innerText = currVal -1;
+            }
+        })
+
+
+    </script> -->
+</body>
+</html>

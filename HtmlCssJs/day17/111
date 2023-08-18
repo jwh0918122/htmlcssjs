@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 문자 인코딩 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 반응형 디자인 설정 -->
+    <title>Document</title> <!-- 웹페이지 제목 -->
+    <style>
+        #myH1 {
+            /*샵은 아이디를 연결*/
+            /* 제목 스타일 설정 */
+            font-size: 72px;
+            font-weight: bold;
+            text-align: center;
+            font-style: italic;
+        }
+
+        #myH3 {
+            /* #은 id를 연결*/
+            /* 부제목 정렬 설정 */
+            text-align: center;
+        }
+
+        #mySection {
+            /* 섹션 레이아웃 설정 */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .character-info {
+            /*쩜은 클래스를 연결*/
+            /* 캐릭터 정보 너비 설정 */
+            width: 30%;
+        }
+
+        .character-name {
+            /* 캐릭터 이름 스타일 설정 */
+            font-style: italic;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--S   기본적 구조시작  기본구조는 이걸로 끝냄.... 이 안에 글자 든 추가 태그등이 들어감-----------------------------S-->
+    <h1 id="myH1"> </h1> <!-- 제목 영역 HTML--> <!--id하나 줌-->
+
+    <h3 id="myH3"> </h3> <!-- 부제목 영역  HTML--> <!--id하나 줌-->
+
+    <section id="mySection"> </section> <!-- 캐릭터 정보 영역 HTML --> <!--id하나 줌--> <!--섹션은 뭔가 직사각형으로 큰 구역 할당 같음. -->
+    <!--E   기본적 구조끝    기본구조는 이걸로 끝냄....이 안에 글자 든 추가 태그등이 들어감------------------------------E-->
+
+
+
+
+
+
+    <!--S   자스동작부분시작         일종의 자바 비슷한 동작?영역 보통 모니터엔 안보일듯 근데... 위의 <h1>  <h3> <section> 내부 등에 html태그를 추가하고 있음... 눈에 보이는 영역도 건드림...----S-->
+    <script>
+        let h1 = document.querySelector('#myH1'); // 아까 위에서 준 id로 제목 선택  #아이디  document.querySelector('샵아이디') 그냥 이렇게 함 그런갑다 할것  변수로 담을것 (나중에 태그사이에 값만 추가하꺼임)
+        let h3 = document.querySelector('#myH3'); // 부제목 선택
+        let section = document.querySelector('#mySection'); // 섹션 선택
+
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json') // JSON 데이터 부르기
+            .then(res => res.json()) // JSON 데이터 받기
+            .then(data_a => {
+                console.log(data_a); //일단 뭐 잘 들어왔나 확인용 콘솔
+                h1.textContent = data_a.squadName; // 제목에 분대(스쿼드) 이름 설정 data_a에 쩜찍고 key찍으면 밸류 리턴됨 그걸 .textContent에 넣음.. 걍 이렇게 함 이해하지 말것 그러려니 할것
+                h3.textContent = 'Hometown: ' + data_a.homeTown + ' // Formed: ' + data_a.formed; // 부제목에 정보 설정
+
+                data_a.members.forEach(membe => { // 일단 members가 배열이라 어쩃든 이렇게 해야함 걍 그런갑다 할것...      data_a.members.forEach( member => {     });     제이슨이 정한 배열모듬=members  배열모듬내의 1개객체=membe   
+                    //변수는 내맘이라 membe로 함  이거 중요한 변수임 membe
+                    let nameParts = membe.name.split(' '); // 이름 분리  제이슨인 data_a의   배열members안의 객체membe안에 키 이름이 name임  배열모듬=members  1개배열=membe
+                    //split(' ')  ' '공백 기준으로 일단 잘라놓고 배열로 2개 만들것임... 3개도 될듯.. .여튼
+                    console.log(nameParts); //배열array됨          ex) ['Molecule', 'Man']
+                    let nameHTML = nameParts.join('<br>'); // 이름을 사이에 <br> 넣고 결합      
+                    console.log(nameHTML);  //ex)  Molecule<br>Man
+                    // let powersList = membe.powers.map(power => `<li>${power}</li>`).join(''); // 능력 리스트 생성
+                    // powers배열에서 리스트 생성하려고 걍 for문 씀... 이럴바에 위에서 forEach대신에 이걸 쓸까 했는데... 어쨷슨 여기선 요거로
+                    let powersList = '';
+                    for (let i = 0; i < membe.powers.length; i++) { //1개 membe객체 안에 배열powers의 길이 만큼 돌고 
+                        powersList += `<li>${membe.powers[i]}</li>`;  //그 길이 모든 값을 li까지 붚여서 powersList에 연결? 담아놓고 일단 대기
+                    }
+                    //색션쪽엔 백틱으로.. 한번시도 저위 섹션 사이에 넣을꺼임 백틱은 그냥 다 떄려넣어도 됨
+                    section.innerHTML += `  <!-- 백틱으로 하기 시작 -->
+                        <div class="character-info">  <!-- 클래스 이름정함 대충 아이디 비슷한거임 --> <!--잘모르면 걍 div로... -->
+                            <h2 class="character-name">${nameHTML}</h2> <!-- 이름 설정 --> <!--예시 Molecule<br>Man --> <!--예는 이미 membe.name등을 다 해서 넣은 변수임 -->
+                            <p>Secret identity: ${membe.secretIdentity}</p> <!-- 비밀ID? 가져옴 걍 쩜 으로 ... 각 객체는 membe --> 
+                            <p>Age: ${membe.age}</p> <!-- 나이 설정 membe.키 -->
+                            <p>Superpowers:</p> <!-- 능력 목록 -->
+                            <ul>${powersList}</ul> <!--아까일단대기하던것 여기에 넣기 -->
+                        </div>
+                    `; // 각 캐릭터 정보 추가완료
+                });
+            });
+    </script>
+    <!--E   자스동작부분끝         일종의 자바 비슷한 동작?영역 보통 모니터엔 안보일듯 근데... 위의 <h1>  <h3> <section> 내부 등에 html태그를 추가하고 있음... 눈에 보이는 영역도 건드림...----E-->
+
+
+
+</body>
+
+</html>
+
+
+<!--
+P.S
+이와중에 key인 members는 value가 또 배열임 배열안에 객체있음. 그 객체 안에 key value가 있으며 그중 key이름= powers는 value가 배열임....
+
+-->

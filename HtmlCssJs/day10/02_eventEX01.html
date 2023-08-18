@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face{
+            font-family: jua;
+            src: url(/font/Jua-Regular.ttf);
+        }
+        body{
+            font-family: jua;
+        }
+        fieldset{
+            width: 250px;
+            font-weight: 700;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 15px;
+            background-color: rgba(172, 255, 47, 0.349);   
+        }
+        input{
+            border-radius: 5px;
+            border: none;
+            width: 85%;
+            height: 16px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            border: 2px solid green;
+            background-color: white;
+            border-radius: 15px;
+            margin-top: 10px;
+            font-size: 15px;
+            font-weight: 700;   
+            font-family: jua;     
+            cursor: pointer;    
+        }
+        button:hover{
+            background-color: rgba(0, 128, 0, 0.342);
+        }
+
+    </style>
+</head>
+<body>
+    <form action="">
+    <fieldset>
+        <legend>점수 합계, 평균 계산하기</legend>
+            <input type="text" id="name" placeholder="name"><br>
+            <input type="number" id="korean" placeholder="korean"><br>
+            <input type="number" id="english" placeholder="english"><br>
+            <input type="number" id="math" placeholder="math"><br>
+            <button type="button" id="sum">합계</button>
+            <button type="button" id="avg">평균</button>
+            </fieldset>
+
+    <h3 id="h3"></h3>
+    </form>
+    <script>
+        //이름, 국어, 영어, 수학 점수 입력받아
+        //합계와 평균을 화면에 출력
+
+        
+        //합계
+        document.getElementById('sum').addEventListener('click',
+        function(){
+            //이름, 국어, 영어, 수학 점수 입력받아
+            let korean = document.getElementById('korean').value;
+            let english = document.getElementById('english').value;
+            let math = document.getElementById('math').value;
+
+            //합계를 화면에 출력
+            let h3 = document.getElementById('h3');  
+            korean = new Number(korean);   //String -> Number로 바꾸기
+            english = new Number(english);
+            math = new Number(math);
+            h3.innerText = `${name}의 점수 합계 : ${korean+english+math}`
+        });
+
+         //평균
+         document.getElementById('avg').addEventListener('click',
+        function(){
+            //이름, 국어, 영어, 수학 점수 입력받아
+            let korean = document.getElementById('korean').value;
+            let english = document.getElementById('english').value;
+            let math = document.getElementById('math').value;
+
+            //평균을 화면에 출력
+            let h3 = document.getElementById('h3');  //String -> Number로 바꾸기
+
+            korean = new Number(korean);
+            english = new Number(english);
+            math = new Number(math);
+            h3.innerText = `${name}의 점수 평균 : ${(korean+english+math)/3}`
+        });
+    </script>
+</body>
+</html>

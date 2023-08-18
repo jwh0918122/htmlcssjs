@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업창</title>
+</head>
+
+<body>
+    <h1>
+        Window 메서드 종류
+    </h1>
+    <ul>
+        <li>
+            팝업창 열 때
+            window.open('url','window name','option(size, scroll등)');
+        </li>
+        <li>
+            팝업창 닫을 때
+            window.close();
+        </li>
+        <li>
+            alert() : 경고창 띄움. / prompt() : input 받을 수 있는 창
+            confirm() : 확인or취소 창
+        </li>
+    </ul>
+    <button type="button" onclick="openWindow()">열기</button>
+    <button type="button" onclick="closeWindow()">닫기</button>
+    <button type="button" onclick="alert1()">alert</button>
+    <button type="button" onclick="confirm1()">confirm</button>
+    <button type="button" onclick="prompt1()">prompt</button>
+    <h3 id="msg"></h3>
+
+    <script>
+        let myWindow;
+
+        function openWindow() {
+            myWindow = window.open("", "mywindow", "width=400, height=500");
+        }
+        function closeWindow() {
+            if (myWindow) {
+                myWindow.close();
+            }
+        }
+
+        function alert1() {
+            alert('alert 연습')
+        }
+        function confirm1() {
+            let cf = confirm('confirm창');
+
+            if (cf) {
+                document.getElementById('msg').innerText = `확인을 눌렀습니다.`;
+            } else {
+                document.getElementById('msg').innerText = `취소를 눌렀습니다.`;
+            }
+        }
+        function prompt1() {
+
+            document.getElementById('msg').innerText = prompt();
+        }
+
+    </script>
+
+</body>
+
+</html>

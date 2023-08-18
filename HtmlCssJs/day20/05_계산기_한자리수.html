@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1f1f1f1f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            border: 1px solid #333;
+            background-color: #ccc;
+            padding: 5px;
+        }
+
+        .calculator form {
+            display: grid;
+            grid-template-columns: repeat(4, 65px);
+            grid-auto-rows: 65px;
+            gap: 5px;
+        }
+
+        .calculator form button,
+        input {
+            font-size: 1rem;
+            /* font-weight: bold; */
+            border: 2px solid black;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .calculator form button:hover {
+            box-shadow: 1px 1px 2px #333;
+        }
+
+        .calculator form .clear {
+            background-color: orangered;
+        }
+
+        .calculator form .operator {
+            background-color: orange;
+        }
+
+        .calculator form .dot {
+            background-color: greenyellow;
+        }
+
+        .calculator form input[type='text'] {
+            grid-column: span 4;
+            text-align: right;
+            background-color: white;
+        }
+
+        .calculator form .clear {
+            grid-column: span 3;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .calculator form .result {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <form name="forms">
+            <input type="text" id="output" name="output">
+            <button type="button" class="clear" value="C" id="cl">C</button>
+            <button type="button" class="operator" value="/" id="oper">/</button>
+            <button type="button" class="number" value="1" id="num">1</button>
+            <button type="button" class="number" value="2" id="num">2</button>
+            <button type="button" value="3" id="num">3</button>
+            <button type="button" class="operator" value="*" id="oper">*</button>
+            <button type="button" value="4" id="num">4</button>
+            <button type="button" value="5" id="num">5</button>
+            <button type="button" value="6" id="num">6</button>
+            <button type="button" class="operator" value="+" id="oper">+</button>
+            <button type="button" value="7" id="num">7</button>
+            <button type="button" value="8" id="num">8</button>
+            <button type="button" value="9" id="num">9</button>
+            <button type="button" class="operator" value="-" id="oper">-</button>
+            <button type="button" class="dot" value=".">.</button>
+            <button type="button" value="0" id="num">0</button>
+            <button type="button" class="operator result" value="=" id="eq">=</button>
+        </form>
+    </div>
+
+    <script>
+        let num1; //숫자 1
+        let num2; //숫자 2
+        let cnt = 0;
+        let result = 0;
+        let ch = '';
+
+        document.addEventListener('click', (e) => {
+
+            if (e.target.id == 'num') {
+                if (cnt == 0) { //cnt가 0일떄
+                    document.getElementById('output').value += `${e.target.value}`; //계산기에 띄우기
+                    num1 = e.target.value;
+                    cnt++; //cnt=1
+                    console.log('num1 : ' + num1)
+                } else { //cnt가 1일떄
+                    document.getElementById('output').value += `${e.target.value}`; //계산기에 띄우기
+                    num2 = e.target.value;
+                    cnt--; //cnt=0
+                    console.log('num2 : ' + num2)
+                }
+            } else if (e.target.id == 'oper') {
+                ch = e.target.value;
+            } else if (e.target.id == 'eq') {
+
+                switch (ch) {
+
+                    case '+':
+                        result = Number(num1) + Number(num2); break;
+                    case '-':
+                        result = Number(num1) - Number(num2); break;
+                    case '/':
+                        result = Number(num1) / Number(num2); break;
+                    case '*':
+                        result = Number(num1) * Number(num2); break;
+
+                }
+                console.log('result : ' + result)
+                document.getElementById('output').value = `${result}`; //계산기에 띄우기
+            } else if (e.target.id == 'cl') {
+                num1 = 0;
+                num2 = 0;
+                result = 0;
+                document.getElementById('output').value = ``;
+                console.clear();
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>

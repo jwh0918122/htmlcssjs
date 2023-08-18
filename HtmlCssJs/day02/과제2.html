@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #styletag{
+            font-size: 50px;
+            color: aqua;
+            background-color: blanchedalmond;
+        }
+        .styleclass{
+            font-size: 70px;
+            font-style: italic;
+            background-color:yellowgreen
+        }
+        
+        .styleclass:link{
+            color: aqua;
+        }
+        .styleclass:visited{
+            color: yellow
+        }
+        .styleclass:active{
+            color: rgb(255, 0, 0);
+        }
+
+        .ulstyle{
+            font-size: 30px;
+        }
+
+        /* 그냥 li라고 해도 되지만 ul>li로 해주는게 더 좋음 */
+        ul>li{
+            list-style: none;  /* 옆에 동그마리 없애줌 */
+            display: inline;   /* 옆으로 나열 */
+            margin-right: 20px;  /* 오른쪽 띄어쓰기 */
+            
+        }
+        ul>li:nth-child(even){
+            color:red
+        }
+        ul>li:nth-child(3n){
+            color: green;
+        }
+        
+        ul>li:first-child, li:last-child{
+            font-weight: 700;
+        }
+
+        li:hover{
+            font-style: italic;
+        }
+        /* 
+        ::after : 뒤에 붙이는 가상 값
+        ::before : 전에 붙이는 가상 값
+         */
+        li::after{
+            content : "|"
+        }
+        li::before{
+            content : "li태그"
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+        div 3개를 만들어
+        naver, google, daum 사이트로 연결되게 하고, 
+        각 div는 색깔과 모양을 달리 스타일 추가
+        color : 글자색
+        background-color : 면 색
+        폰트 관련 스타일들
+
+        링크 클릭했을지에 따라서 글꼴 색이 달라지는 가상선택자가 있음.
+        (의사선택자)
+        a:active(클릭할때 색)
+        a:visited(링크를 눌러본 후 색)
+        a.link(클릭 전)
+     -->
+     <!-- 
+        ul -> li 태그 10개 생성
+        전체 글자 크기 크게(일정하게)
+        짝수 : 색 변경(빨간색)
+        3,6,9 : 색 변경(초록색)
+        1,10 : 굵게
+        :hover
+
+      -->
+     <div>
+        <a href="http://www.naver.com" target="_blank"  id="styletag" >네이버</a>
+     </div>
+     <div >
+        <a href="http://www.googlr.co.kr" target="_blank" class="styleclass">구글</a>
+     </div>
+     <div class="styleclass">
+        <a href="http://www.daum.net" target="_blank" class="styleclass">다음</a>
+     </div>
+
+     <ul class="ulstyle">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+     </ul>
+</body>
+</html>

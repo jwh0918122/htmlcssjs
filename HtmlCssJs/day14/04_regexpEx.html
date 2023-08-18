@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #green{
+        color: green;
+    }
+    #red{
+        color: red;
+    }
+    button{
+        margin-left: 10px;
+    }
+</style>
+<body>
+    <!-- 
+        input 파일에 파일명. 확장자를 입력하여 전송 버튼을 누르면
+        이미지 파일인지 검사하여
+        이미지 파일이면
+        '정상 파일입니다.' <초록색>
+        이미지 파일이 아니면 
+        '이미지 파일만 가능합니다' <빨간색>
+        출력하기
+        이미지파일 : jpg, png, jpeg, gif
+        - 대문자로 된 확장자명도 판단 가능해야 함.
+     -->
+
+     파일명 : <input type="text" id="fileName"><button type="button" id="btn">전송</button>
+     <h3 id="printBox"></h3>
+
+     <script>
+        document.getElementById('btn').addEventListener('click',()=>{
+            let fileName = document.getElementById('fileName').value;
+            if(fileName.slice(fileName.lastIndexOf(".")+1).match(/(jpg|jpeg|png|gif)/i)){
+            document.getElementById('printBox').innerHTML=
+            `<p id='green'>정상 파일입니다.</p>`;
+            }else{
+            document.getElementById('printBox').innerHTML=
+            `<p id='red'>이미지 파일만 가능합니다</p>`;
+           }
+        
+        })
+     </script>
+    
+</body>
+</html>

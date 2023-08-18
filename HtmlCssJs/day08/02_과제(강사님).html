@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .container{
+            width: 75%;
+            height: 1200px;
+          
+            margin: auto;
+            background-image: url(/image/비행기.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+            text-align: center;
+        }
+        .cover{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .inner{
+            width: 60%;
+            background-color: white;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .inner>img{
+            width: 10%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .inner>h2{
+            margin: 5px;
+        }
+        /* .inner>h2:first-child{
+            margin-top: 20;
+            margin-bottom: 0px;
+        }
+        .inner>h2:last-child{
+            margin-top: 0;
+            margin-bottom: 20px;
+        } */
+        .inner>p{
+           
+            font-size: 10px;
+        }
+        .bt{
+            border-top: 1px solid gray;
+            margin-top: 20px;
+            background-color: rgba(220, 220, 220, 0.808);
+            padding: 15px;
+            
+        }
+        .bt>p{
+            font-size: 10px;
+            margin: 0;
+          
+        }
+        .icon{
+            width: 15px;
+            height: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cover">
+            <div class="inner">
+                <img src="/image/컴퓨터/노트북.jpg" alt="">
+                <h2>사용자 수가 많아 접속이 지연되고 있습니다.</h2>
+                <h2>잠시 기다려 주세요.</h2>
+                <img src="/image/버퍼링.png" alt="" class="icon">
+                <p>접속이 어려운 경우 메인으로 자동 이동합니다.</p>
+                <div class="bt">
+                    <p>관련 문의사항은 고객셈터에 문의해주시면 친절히 안내해드리겠습니다.</p>
+                    <p>고객 상담 전화 : 032-000-0000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

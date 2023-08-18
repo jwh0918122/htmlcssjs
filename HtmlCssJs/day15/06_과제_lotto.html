@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+       1~45까지의 중복되지 않는 숫자 6개가 랜덤으로 추출 후 순서대로 출력하기
+       단, Set 객체를 사용할 것 
+    </h1>
+    <button type="button" id="ranBtn">랜덤번호 6개 출력하기</button>
+    <h1 id="ranPrint"></h1>
+    <button type="button" id="lottoBtn">당첨번호 7개(마지막은 보너스~) 출력하기</button>
+    <h1 id="lottoPrint">당첨번호</h1>
+    <button type="button" id="resultBtn">결과확인</button>
+    <h1 id="result">결과 당첨/꽝</h1>
+
+    <script>
+        const ranNum = new Set(); //랜덤번호 6개
+        const lottoNum = new Set(); //당첨번호 7개 set
+        let lotto = []; //당첨번호 7개 배열
+        let cnt =0; //맞춘 갯수
+        let bonu =0; //보너스 맞춘 유무
+
+        //랜덤번호 6개 출력
+        document.getElementById('ranBtn').addEventListener('click',()=>{
+            document.getElementById('ranPrint').innerText=''; //화면 초기화
+            ranNum.clear(); //Set 초기화
+
+            while(ranNum.size!=6){
+                ranNum.add(Math.floor(Math.random()*45)+1); //랜덤번호 Set에 넣기
+            }
+            console.log(`---ranNum 확인---`);
+            console.log(ranNum);
+
+            ranNum.forEach(function(e){
+                document.getElementById('ranPrint').innerHTML+=`${e} `;
+            })
+        })
+
+        //당첨번호 7개 출력
+        document.getElementById('lottoBtn').addEventListener('click',()=>{
+            document.getElementById('lottoPrint').innerText=''; //화면 초기화
+            lottoNum.clear(); //Set 초기화
+            lotto = []; //lotto 배열 초기화
+            
+            //당첨번호 7개 Set에 넣기
+            while(lottoNum.size!=7){
+                lottoNum.add(Math.floor(Math.random()*45)+1); 
+            }
+           
+            //당첨 7숫자 set을 배열에 넣기
+            lottoNum.forEach(function(e){
+                lotto.push(e);  
+            })
+        
+            console.log('---당첨번호 배열 확인---')
+            console.log(lotto);
+        
+            //당첨번호 출력
+            for(let i=0;i<=5;i++){
+                document.getElementById('lottoPrint').innerHTML+=`${lotto[i]}  `;
+            }
+            document.getElementById('lottoPrint').innerHTML+=`<br>보너스 번호 : ${lotto[6]}`;
+
+
+
+        //결과 출력
+        document.getElementById('resultBtn').addEventListener('click',()=>{
+            
+            document.getElementById('result').innerText=``;
+            cnt=0; //초기화
+            bonu=0; //초기화
+            let str='';
+            
+
+            //lotto배열과 ranNum set을 비교
+             for(let i=0;i<=5;i++){
+                ranNum.forEach(function(e){
+                    if(lotto[i]==e){
+                        cnt++;
+                    }
+                })
+            }
+            
+            ranNum.forEach(function(e){
+                if(lotto[6]==e){
+                    bonu++;
+                }
+            })
+
+           switch(cnt){
+            case 6 : 
+                if(bonu==0){
+                    str=`1등(6개 일치)`;
+                }
+                break;
+            case 5 : 
+                if(bonu==1){
+                    str=`2등(번호5개, 보너스 번호 일치)`;
+                }else{
+                    str=`3등(번호 5개 일치)`;
+                }
+                break;
+            case 4 : 
+            if(bonu==0){
+                    str=`4등(4개 일치)`;
+                }
+                break;
+            case 3 : 
+            if(bonu==0){
+                    str=`5등(3개 일치)`;
+                }
+                break;
+            default : 
+            str=`꽝`;
+
+           }
+           console.log(`cnt : ${cnt} / bonu : ${bonu}`)
+
+           document.getElementById('result').innerText=str;
+
+        })
+        })
+
+
+
+
+    </script>
+</body>
+</html>

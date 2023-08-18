@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>item List</title>
+    <style>
+        @font-face {
+            font-family: jua;
+            src: url(/font/Jua-Regular.ttf);
+        }
+
+        body {
+            font-family: jua;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #bigBox {
+            width: 600px;
+            margin-top: 5px;
+            left: 50%;
+            transform: translate(-50%);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #set {
+            border-radius: 15px;
+            background-color: aquamarine;
+            width: 100%;
+            ;
+            height: 80px;
+        }
+
+        #tx {
+            margin-left: 15px;
+            height: 40px;
+            width: 80%;
+            float: left;
+            margin-top: 19px;
+            border: none;
+            border-radius: 15px;
+            padding-left: 15px;
+        }
+
+        #btn {
+            margin-right: 15px;
+            float: right;
+            margin-top: 17px;
+            width: 70px;
+            height: 45px;
+            border: none;
+            border-radius: 15px;
+            font-family: jua;
+            font-size: 20px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul>li {
+            width: 100%;
+            height: 50px;
+            list-style: none;
+            border: 1px solid black;
+            margin-left: 0;
+            background-color: white;
+            line-height: 50px;
+            border: none;
+            padding-left: 15px;
+            /* border: 2px solid gray; */
+            border-radius: 15px;
+
+        }
+
+        #x {
+            float: right;
+            width: 20px;
+            height: 20px;
+            line-height: 50px;
+            margin-top: 15px;
+            font-size: 10px;
+            line-height: 15px;
+            margin-right: 10px;
+        }
+
+        ul>li:nth-child(even) {
+            background-color: rgba(135, 207, 235, 0.459);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>여행 준비물 점검 목록</h1>
+    <div id="bigBox">
+        <div id="set"><input type="text" id="tx" autofocus="true"><button type="button" onclick="" id="btn">추가</button>
+        </div>
+        <ul id="ul"></ul>
+    </div>
+    <script>
+        let arr = [];
+        //추가 버튼
+        document.getElementById('btn').addEventListener('click', () => {
+            document.getElementById('ul').innerHTML = "";//초기화
+            let tx = document.getElementById('tx').value;
+            arr.push(tx); //배열에 넣기
+            document.getElementById('tx').value = '';//입력란 초기화
+            document.getElementById('tx').focus(); //포커스 얻기
+            console.log(arr);
+            //화면에 출력
+            show();
+        })
+
+        //삭제 함수
+        function del(idx) {
+            document.getElementById('ul').innerHTML = ""; //초기화
+            arr.splice(idx, 1); //요소 삭제   
+            console.log(arr);
+            //다시 화면에 출력
+            show();
+        }
+
+        //화면 출력 함수
+        function show() {
+            for (let i = 0; i < arr.length; i++) {
+                document.getElementById('ul').innerHTML += `<li id="li ${i}">${arr[i]}<span><button type="button" id="x" onclick="del(${i})" >X</button></span></li>`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>과제(뉴욕)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Single+Day&family=Tektur:wght@500&display=swap"
+        rel="stylesheet">
+    <style>
+        .제목 {
+            width: 300px;
+            height: 100px;
+            border: 3px solid black;
+            text-align: center;
+            font-size: 50px;
+            margin: 30px auto;
+            padding-top: 15px;
+            box-sizing: border-box;
+            font-family: 'Tektur', cursive;
+            text-shadow: 5px 1px 7px;
+            box-shadow: 5px 5px 5px;
+        }
+
+        ul>li {
+            font-size: 30px;
+            text-align: center;
+            list-style: none;
+            display: inline;
+            margin-right: 20px;
+        }
+
+        a {
+            width: 200;
+            height: 200;
+        }
+
+        ul {
+            width: 500px;
+            text-align: center;
+            margin: auto;
+            padding: 0;
+            font-family: 'Do Hyeon', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+
+        }
+
+        img {
+            width: 340px;
+            height: 453px;
+            margin: 10px auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="제목">Travel</div>
+    <div>
+        <ul>
+
+            <li id="s" onclick="test(this)">서울</li>
+            <li id="n" onclick="test(this)">뉴욕</li>
+            <li id="d" onclick="test(this)">도쿄</li>
+            <li id="p" onclick="test(this)">파리</li>
+        </ul>
+    </div>
+    <div><img src="/image/배경/서울.jpg " alt="" id="image"></div>
+
+    <script>
+        let img = document.getElementById('image');
+
+        // function s() {
+        //     img.src = "/image/배경/서울.jpg";
+        // }
+        // function n() {
+        //     img.src = "/image/배경/뉴욕.jpg";
+        // }
+        // function d() {
+        //     img.src = "/image/배경/도쿄.jpg";
+        // }
+        // function p() {
+        //     img.src = "/image/배경/파리.jpg";
+        // }
+
+        function test(elem) {
+            console.log(elem);
+            let id = elem.getAttribute('id');
+
+            switch (id) {
+                case 's': img.src = "/image/배경/서울.jpg";
+                    break;
+                case 'n': img.src = "/image/배경/뉴욕.jpg";
+                    break;
+                case 'd': img.src = "/image/배경/도쿄.jpg";
+                    break;
+                case 'p': img.src = "/image/배경/파리.jpg";
+                    break;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

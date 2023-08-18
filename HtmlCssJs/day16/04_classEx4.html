@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log('---예제---');
+        //class User 생성
+        //생성자로 name, birth를 받아서 멤버변수로 저장
+        //age() 나이를 리턴
+        //status() 성인인지 미성년자인지 콘솔에 출력
+
+        
+        //만약 생성자에서 선언된(ex : age) 값을 리턴 시 
+        //get age(){
+        //  return this._age; => _내부속성이다 라는 뜻
+        //}
+        
+        
+        class User{
+            constructor(name,birthday){
+                this.name=name;
+                this.birth=birthday;
+            }
+            //age를 리턴하는 get 
+            get printAge(){
+                
+                return `나이 : ${today.getFullYear() - this.birth.getFullYear()}`;
+            }
+            //status() 성인인지 미성년자인지 콘솔에 출력하는 메서드 
+            status(){
+                if((today.getFullYear() - this.birth.getFullYear())>=20){
+                    return console.log(`성인입니다.`);
+                }else{
+                    return console.log(`미성년자 입니다.`);
+                }
+            }
+            
+        }
+        
+        let today = new Date();
+        let birthday = new Date('1997-09-18');
+        let user = new User('장원희',birthday);
+        console.log(user.printAge); //나이 : 26
+        user.status(); // 성인입니다.
+
+
+        /*강사님*/
+        // class User{
+        //     constructor(name,birth){
+        //         this.name=name;
+        //         this.birth=birth;
+        //     }
+        //     get age(){
+        //         let birthday = new Date(this.birth);
+        //         let todayYear = new Date().getFullYear(); //오늘날짜 연도
+        //         return todayYear - birthday.getFullYear();
+        //     }
+        //     status(){
+        //         let age =this.age;
+        //         if(age<20){
+        //             console.log(`미성년자`);
+        //         }else{
+        //             console.log(`성인`);
+        //         }
+        //     }
+        // }
+
+        // let hong = new User('hong','85-01-01');
+        // //메서드일경우 (). get일 경우 ()안함        
+        // console.log(hong.age); //38
+        // hong.status(); //성인
+        
+
+    </script>
+</body>
+</html>

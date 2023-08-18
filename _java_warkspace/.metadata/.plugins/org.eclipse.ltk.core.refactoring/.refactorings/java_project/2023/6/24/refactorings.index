@@ -1,0 +1,30 @@
+1686555188296	Delete element
+1686572703363	Rename local variable 'a'
+1686572722368	Rename local variable 'b'
+1686722257394	Rename type 'EzenComMain1'
+1686744616019	Delete element
+1686811303758	Rename type '숙제'
+1686811752826	Rename type '숙제강사님'
+1686813793208	Rename type 'program'
+1686814138382	Delete element
+1686814274985	Delete element
+1686814294184	Rename type 'Product'
+1686814331225	Rename type 'ProductMain'
+1686815201047	Rename type 'progranClass'
+1686815647357	Delete element
+1686815686721	Rename type 'studentManager'
+1686815748802	Delete element
+1686825185581	Delete element
+1686832959843	Rename method 'insertubject'
+1686832983184	Rename method 'deleteSunject'
+1686900225588	Rename local variable 'h'
+1686900233081	Rename local variable 't'
+1686900239094	Rename local variable 'e'
+1686900493517	Rename local variable 'hu'
+1686904224907	Delete element
+1686904227971	Delete element
+1686905590391	Rename type 'Costomer'
+1686905598587	Rename type 'CUstomer'
+1686911303893	Delete element
+1686917369613	Rename compilation unit 'VIP.java'
+1686917422951	Rename compilation unit 'Main.java'

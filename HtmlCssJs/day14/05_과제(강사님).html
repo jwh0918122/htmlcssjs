@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     
+    </style>
+</head>
+<body>
+    <h1>구구단 영역(2*1=2 ~ 9*9=81)내에서 랜덤으로 문제를 내면 정답을 맞추는 로직</h1>
+    
+    <ol>
+        <li>
+            총 문제는 10문제 출제
+        </li>
+        <li>
+            문제를 풀 때 정답, 오답의 결과를 나타냄
+        </li>
+        <li>
+            총 10개의 문제 중 정답률을 출력
+        </li>
+    </ol>
+
+    <button type="button" id="gugu">문제출제</button>
+    <ol id="ol">
+        <!-- <li id="li1"></li>
+        <li id="li2"></li>
+        <li id="li3"></li>
+        <li id="li4"></li>
+        <li id="li5"></li>
+        <li id="li6"></li>
+        <li id="li7"></li>
+        <li id="li8"></li>
+        <li id="li9"></li>
+        <li id="li10"></li> -->
+    </ol>
+    <button type="button" id="answerBtn">정답확인</button>
+
+    <h3 id="cntPrint"></h3>
+
+    <script>
+        let num1=0;
+        let num2=0;
+        let num1List=[]; //num1리스트
+        let num2List=[]; //num2리스트
+        let answer=[]; //답 배열
+        let userAnswer=[];//유저 답 배열
+        let cnt =0; //정답 수
+
+        //문제 출제
+        document.getElementById('gugu').addEventListener('click',()=>{
+            document.getElementById('ol').innerHTML=""; //문제 초기화
+            cnt=0; //정답 수 초기화
+            answer=[]; //답 배열 초기화
+            userAnswer=[]; //유저 답 배열 초기화
+            
+
+            for(let i=0;i<10;i++){
+                num1 = Math.floor(Math.random()*9)+1; //
+                num2 = Math.floor(Math.random()*9)+1; //
+
+                num1List.push(num1);
+                num2List.push(num2);
+                answer.push(num1 * num2);
+
+                document.getElementById('ol').innerHTML+=
+                `<li id="li"> ${num1} * ${num2} = <input type="text" id="userAnswer${i}"></li>`;
+            }
+        })
+
+        
+
+        //문제 확인
+        document.getElementById('answerBtn').addEventListener('click',()=>{
+           
+
+           //유저 답 배열에 넣기
+            for(let i=0;i<10;i++){
+              userAnswer.push(document.getElementById(`userAnswer${i}`).value); 
+            }
+
+            for(let i=0;i<10;i++){
+                if(answer[i]==userAnswer[i]){
+                    document.getElementById(`userAnswer${i}`).style.backgroundColor="green";
+                    // document.getElementById(`userAnswer${i}`).innerHTML=`<span>정답</span>`;
+                    cnt++;
+                }else{
+                    document.getElementById(`userAnswer${i}`).style.backgroundColor="red";
+                    // document.getElementById(`userAnswer${i}`).innerHTML=`<span>오답</span>`;
+                }
+            }
+            document.getElementById('cntPrint').innerHTML=`<P>정답률 : ${(cnt/10)*100}%</p>`;
+
+        })
+
+        
+    </script>
+</body>
+</html>

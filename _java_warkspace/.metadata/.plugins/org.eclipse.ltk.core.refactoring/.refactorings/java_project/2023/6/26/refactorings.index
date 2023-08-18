@@ -1,0 +1,32 @@
+1687779605974	Rename local variable 'list'
+1687781789083	Rename type '숙제'
+1687782124098	Rename field 'price'
+1687844174672	Rename type 'Card'
+1687850444568	Rename compilation unit 'Customer강사님.java'
+1687850453995	Rename type '숙제'
+1687855258375	Delete element
+1687868445757	Rename type 'word'
+1687877082801	Rename local variable 'fw'
+1687878284763	Rename local variable 'fw2'
+1687881408483	Rename type 'EnglishDictionary'
+1687881446344	Delete element
+1687882934459	Rename local variable 'manager'
+1687883159564	Rename method 'insertWord'
+1687935194995	Move compilation unit
+1687941673925	Rename type 'MyThread03'
+1687947471677	Copy compilation unit
+1687947641841	Delete element
+1687947657902	Rename type 'Tread02'
+1687955378388	Copy compilation unit
+1687962223245	Delete element
+1687967834478	Copy compilation unit
+1687967862215	Delete element
+1687973943993	Copy package
+1688023855954	Rename type 'grade'
+1688037087358	Delete element
+1688037220573	Rename type '예매매니저'
+1688037365455	Rename type 'Myticket'
+1688037838500	Delete element
+1688037884023	Rename package '팀플'
+1688038001529	Delete element
+1688112800899	Delete elements

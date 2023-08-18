@@ -1,0 +1,179 @@
+@import url(/day07/reset.css);
+@font-face {
+    font-family: jua;
+    src: url(/font/Jua-Regular.ttf);
+}
+body{
+    font-family: jua;
+}
+.navbar{
+  display: flex;
+  justify-content: space-between;  
+  box-sizing: border-box;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.navbar>a{
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: 700;
+    color: palevioletred;
+    
+}
+.navbar ul>li {
+    display: inline;
+    margin-right: 10px;
+    font-size: 18px;
+}
+.navbar ul>li >a{
+    text-decoration: none;
+    color: palevioletred;
+    font-weight: 700;
+    
+}
+.main-img{
+    width: 100%;
+    height: 400px;
+    background-position: center;
+    background-image: url(/image/디저트/디저트메인2.jpg);
+}
+h1{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 30px;
+    color: gray;
+    margin-bottom: 0;
+}
+.products{
+    /* padding: 30px; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 5%;
+    align-content:center;
+}
+.products>a{
+    margin-bottom: 50px;
+    height: 250px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: palevioletred;
+    font-weight: 700;
+    position: relative;
+}
+.products>a>img{
+    border-radius: 25px;
+    width: 300px;
+    height: 250px;
+}
+.products>a ul{
+    margin-top: 10px;
+   
+}
+.best{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 190px;
+    left: 50%;
+    transform: translate(-50%);
+    color: rgb(112, 107, 107);
+    text-shadow: 2px 2px 2px palevioletred ;
+    font-size: 20px;
+    display: none;
+}
+.products>a>img:hover{
+    width: 305px;
+    height: 270;
+    box-shadow:  5px 5px;   
+}
+.products>a ul:hover{
+  font-size: 17px;
+}
+.navbar ul>li >a:hover{
+    text-shadow: 2px 2px 8px;
+}
+.products>a>img:hover ~ .best{
+    display: block;
+}
+
+@keyframes ch_ani{
+    0%{
+        left: 20%;
+    }
+    50%{
+        left: 75%;
+    }
+    100%{
+        left: 20%;
+    }
+}
+.ch{
+    width: 100%;
+    height: 100px;
+}
+.ch>img{
+    position: absolute;
+    animation-name: ch_ani;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    /* left: 0%; */
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+}
+.footer{
+    padding: 20px;
+    width: 100%;
+    
+}
+.footer a{
+    text-decoration: none;
+    color: gray;
+    
+}
+
+.footer>p{
+    
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: gray;
+    padding: 2px;
+}
+
+.iconbox1, .iconbox2{
+    width: 400px;
+    height: 50px;
+    position: relative;
+}
+.kakao{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 5px;
+}
+.문의1{
+    position: absolute;
+    font-size: 20px;
+    left: 50px;
+    line-height: 50px;
+}
+.naver{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 5px;
+}
+.문의2{
+    position: absolute;
+    font-size: 20px;
+    left: 50px;
+    line-height: 50px;
+}

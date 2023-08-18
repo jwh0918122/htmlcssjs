@@ -1,0 +1,94 @@
+package 영화예매;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+public class Time {
+	private int num; //번호
+	private HashMap<String, Integer> timeNprice=new HashMap<>(); //시간, 가격
+//	private ArrayList<String> seatList;
+	private List<String> seat;
+	private MovieReservation m = new MovieReservation(); //좌석객체 생성
+	
+	public Time(int num, String time, Integer price) {
+//		좌석 seat=new 좌석();
+//		seatList=seat.seat(); //좌석리스트 생성
+		this.num=num;
+		timeNprice.put(time, price);
+		seat=m.getTicketingSeats();
+	}
+	
+	public void printTime() {
+		for(String tmp: getTimeNprice().keySet()) {
+			System.out.print("<"+tmp+">");
+		}
+	}
+	
+	public void ticketSeat() {
+		m.selectMovieSeats();
+	}
+	
+	public void printSeat() {
+		System.out.println("--예매한 좌석--");
+		for(String tmp: seat) {
+			System.out.print(tmp + " ");
+		}
+	}
+
+//	public void printSeat() { //전체 좌석 출력
+//		System.out.println("\n--현재 잔여 좌석--");
+//		int cnt=0;
+//		for(int i=0; i<8; i++) { //8행
+//			for(int j=0; j<10; j++) { //10열
+//				System.out.print(seatList.get(cnt)+" ");
+//				cnt++;
+//			}
+//			System.out.println();
+//		}
+//	}
+//	public void ticketSeat(String seat) { //좌석 예매
+//		if(seatList.contains(seat)) { //입력한 좌석이 존재하는지 확인
+//			for(int i=0; i<seatList.size(); i++) {
+//				if(seat.equals(seatList.get(i))) { //자리를 x 표시로 변경
+//					seatList.set(i, "X");
+//					System.out.println("좌석을 성공적으로 예매했습니다.");
+//				}
+//			}
+//		}else {
+//			System.out.println("좌석을 잘못 입력하셨습니다.");
+//		}
+//	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public HashMap<String, Integer> getTimeNprice() {
+		return timeNprice;
+	}
+
+	public void setTimeNprice(HashMap<String, Integer> timeNprice) {
+		this.timeNprice = timeNprice;
+	}
+
+	public List<String> getSeat() {
+		return seat;
+	}
+
+	public void setSeat(List<String> seat) {
+		this.seat = seat;
+	}
+
+	public MovieReservation getM() {
+		return m;
+	}
+
+	public void setM(MovieReservation m) {
+		this.m = m;
+	}
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        form 태그를 통해 데이터를 받아오기
+    </h1>
+    <ul>
+        <li>
+            input, textarea, select, html element의 속성, 텍스트 데이터 받아오기
+        </li>
+        <li>
+            form 태그의 데이터는 value 속성으로 값이 매칭되어 있으므로 value를 호출하면 값을 가져올 수 있음
+        </li>
+        <li>
+            select-option, radio, chekbox valeu 값은 선택된 값을 가져와야 하기 때문에
+            value값을 추가하는 작업이 필요
+        </li>
+        <li>
+            value 속성의 데이터는 모두 string으로 처리된다.
+        </li>
+        <li>
+            string  처리된 데이터는 숫자일 경우 숫자로 사용하기 위해서 변환이 필요
+        </li>
+    </ul>
+    <form action="">
+        <fieldset>  <!-- 하나의 세트이다 테두리를 그어줌 -->
+            <legend>이벤트를 활용한 데이터 전송</legend>   <!-- 제목 -->
+            id : <input type="text" id="userID"><br>
+            pw : <input type="password" id="userPW"><br>
+            birth : <input type="date" id="birth"><br>
+            pin : <input type="number" id="pin"><br>
+            <button type="button" onclick="clickEventInput()">전송</button>
+            <button type="button" onclick="makeList()">리스트로 출력</button>
+            <button type="button" id="listen">리스트로 출력(리스너)</button>
+        </fieldset> 
+    </form>
+    <h3 id="info"></h3>
+    <ol id="ol">
+
+    </ol>
+    <script>
+        /*아이디, 비밀번호 등 정보 받아 리스트로 출력하기*/
+
+        //  1) onclick 사용
+        function makeList(){
+            //화면에서 입력한 값을 받아오는 과정
+            let userID = document.getElementById('userID').value;
+            let userPW = document.getElementById('userPW').value;
+            let birth = document.getElementById('birth').value;
+            let pin = document.getElementById('pin').value;
+            console.log("입력값 > ",userID,userPW,birth,pin);
+
+            //birth -> date 변경 
+            birth = new Date(birth);
+            console.log(typeof birth);
+            
+            //String -> 숫자로 변경
+            //parsInt(변수=> 정수만 가능);
+            //Number(숫자로 변경될 수 있는 문자 모두 가능)
+            //pin -> number 변경
+            // pin = parseInt(pin);
+            // console.log(pin, typeof pin);
+            pin = Number(pin);
+            console.log(pin, typeof pin);
+
+            //li 태그로 출력
+            let ol = document.getElementById('ol');
+            ol.innerHTML = `<li style="color:pink">아이디 : ${userID} / 데이터 타입 : ${typeof userID}</li>`;
+            ol.innerHTML += `<li>비밀번호 : ${userPW} / 데이터 타입 : ${typeof userPW}</li>`;
+            ol.innerHTML += `<li>생년월일 : ${birth} / 데이터 타입 : ${typeof birth}</li>`;
+            ol.innerHTML += `<li>pin : ${pin} / 데이터 타입 : ${typeof pin}</li>`;
+            
+        }
+        //  2) 리스너 사용
+        document.getElementById('listen').addEventListener('click',
+        function(){
+            //화면에서 입력한 값을 받아오는 과정
+            let userID = document.getElementById('userID').value;
+            let userPW = document.getElementById('userPW').value;
+            let birth = document.getElementById('birth').value;
+            let pin = document.getElementById('pin').value;
+            console.log("입력값 > ",userID,userPW,birth,pin);
+
+            //li 태그로 출력
+            let ol = document.getElementById('ol');
+            ol.innerHTML = `<li style="color:pink">아이디 : ${userID} / 데이터 타입 : ${typeof userID}</li>`;
+            ol.innerHTML += `<li>비밀번호 : ${userPW} / 데이터 타입 : ${typeof userPW}</li>`;
+            ol.innerHTML += `<li>생년월일 : ${birth} / 데이터 타입 : ${typeof birth}</li>`;
+            ol.innerHTML += `<li>pin : ${pin} / 데이터 타입 : ${typeof pin}</li>`;
+        })
+
+        /*아이디, 비밀번호 등 정보 받아 h3로 출력하기*/
+        function clickEventInput(){
+            //화면에서 입력한 값을 받아오는 과정
+            let userID = document.getElementById('userID').value;
+            let userPW = document.getElementById('userPW').value;
+            let birth = document.getElementById('birth').value;
+            let pin = document.getElementById('pin').value;
+            console.log(userID,userPW,birth,pin);
+
+            /*h3태그에 출력하는 과정*/
+            // info.innerText=`아이디는 ${userID} 이고, 비밀번호는 ${userPW}, 생년월일은 ${birth}, pin은 ${pin} 입니다`; => let info안해도 됨..?
+        
+           // 한번에 출력하는 법
+            // let info = document.getElementById("info");
+            // info.innerText =
+            // `userID : ${userID}
+            //  userID : ${userPW}
+            //  userID : ${birth}
+            //  userID : ${pin}`;
+
+            //하나씩 출력하는 법
+             info.innerText = `userID : ${userID}`;
+             info.innerText += `userPW : ${userPW}`;
+             info.innerText += `birth : ${birth}`;
+             info.innerText += `pin : ${pin}`;
+        }   
+
+
+    </script>
+</body>
+</html>

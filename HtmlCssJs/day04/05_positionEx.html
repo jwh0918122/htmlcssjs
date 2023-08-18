@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .box{
+        width: 100%;  /*width(너비)는 입력안해도 100%임*/
+        height: 150px;
+        position: relative;
+        background-color: antiquewhite;
+    }
+    .minibox{
+        width: 100px;
+        height: 100px;
+        position:absolute;
+
+    }
+    .minibox:nth-child(1){
+        top: 25px;
+        left: 20px;
+        background-color: skyblue;
+    }
+    .minibox:nth-child(2){
+        top: 25px;
+        left: 50%;
+        transform: translate(-50%);
+        /* transform : translate(x축, y축) */
+        /* 네모 가운데 기준으로 left 50%가 아니라 왼쪽 면 기준 50%라서 정확히 가운데가 아님 */
+        /* 그래서 transform : translate(-50%) 해서 가운데 맞춰줌 */
+        /* top, left기준 -> -(마이너스) */
+        /* bottom, right기준 -> +(플러스) */
+        background-color: brown;
+    }
+    .minibox:nth-child(3){ 
+        top: 25px;
+        right: 20px;
+        background-color: blueviolet;
+    }
+    .outter{
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+        margin-top: 10px;
+        position: relative;
+        background-color: aquamarine;
+       
+    }
+    .inner{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: blue;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="minibox"></div>
+        <div class="minibox"></div>
+        <div class="minibox"></div>
+    </div>
+    <div class="outter">
+        <div class="inner"></div>
+    </div>
+    
+</body>
+</html>

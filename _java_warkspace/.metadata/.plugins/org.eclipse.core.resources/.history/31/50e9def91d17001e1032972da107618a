@@ -1,0 +1,164 @@
+package 영화예매;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class 예매매니저 {
+	
+	영화 mySelectMovie;
+	Date mySelectDate;
+	String mySelectTime;
+	List<String> mySelectSeat;
+	int mySelectPeople;
+	int mySelectPrice;
+	int mySelectChild;
+	int total=0; //총 가격
+	영화리스트 list = new 영화리스트();
+	
+	
+	public 영화리스트 getList() {
+		return list;
+	}
+
+	public void setList(영화리스트 list) {
+		this.list = list;
+	}
+
+	public void ticketing(Scanner scan) {
+		// 현재 상영중인 영화 출력
+		
+		list.영화리스트();
+		list.printMovie();
+		
+		
+		//예매 영화 선택
+		System.out.println("\n예매하실 영화를 선택해주세요.");
+		int select=scan.nextInt();
+		mySelectMovie=list.getMovieList().get(select-1); //내가 선택한 영화
+		System.out.println("<"+ mySelectMovie.getName()+"> "+"를 선택하셨습니다.");
+		
+		//시간대 선택
+		System.out.println("\n예매하실 날짜를 선택해주세요.");
+		mySelectMovie.printDateList(); //날짜 출력
+		select=scan.nextInt();
+		mySelectDate=mySelectMovie.getDateList().get(select-1);
+		//내가 선택한 날짜
+		mySelectDate.printDate(); 
+		System.out.println("을 선택하셨습니다.");
+		
+		//시간 선택
+		System.out.println("\n예매하실 시간을 선택해주세요.");
+		mySelectDate.printTimeList(); //시간 출력
+		select=scan.nextInt();
+		for(String tmp: mySelectDate.getTime().get(select-1).getTimeNprice().keySet()) {
+			mySelectTime=tmp; //선택한 시간
+			mySelectPrice=mySelectDate.getTime().get(select-1).getTimeNprice().get(tmp);
+		}
+		mySelectDate.getTime().get(select-1).printTime();
+		System.out.println("을 선택하셨습니다.");
+		
+		//좌석 선택
+		System.out.println("\n예매하실 좌석을 입력해주세요.");
+		mySelectDate.getTime().get(select-1).ticketSeat(); //좌석 예매
+		mySelectSeat=mySelectDate.getTime().get(select-1).getSeat(); //선택한 좌석들
+		mySelectDate.getTime().get(select-1).printSeat(); //선택 좌석 출력
+		mySelectPeople=mySelectDate.getTime().get(select-1).getM().getPeople();//선택 인원
+		
+		//인원체크
+		System.out.println("\n5세 이하(무료)의 인원수를 입력해주세요.");
+		mySelectChild=scan.nextInt();
+		
+		//인원수 출력
+		System.out.print("\n예매하신 좌석 수는 ");
+		System.out.printf("%d자리 입니다.",mySelectPeople);
+		
+		//가격 출력
+		System.out.println();
+		payments(mySelectPrice, mySelectPeople, mySelectChild);
+//		System.out.print("\n고객님의 예매 가격은 ");
+//		System.out.print(mySelectPrice);
+//		System.out.println("원입니다.");
+		
+	}
+	
+	public MyTicket ticket() {
+		String name=mySelectMovie.getName();
+		String date=mySelectDate.getDate();
+		String time=mySelectTime;
+		List<String> seat=mySelectSeat;
+		int price=mySelectPrice;
+		int people=mySelectPeople;
+		MyTicket my=new MyTicket(name, date, time, seat, price, people);
+		return my;
+	}
+
+	public void printTicket(ArrayList<MyTicket> list) {
+		if(list.size()==0) {
+			System.out.println("예매 목록이 존재하지 않습니다.");
+			return;
+		}
+		System.out.println("--예매한 영화 목록--");
+		for(int i=0; i<list.size(); i++) {
+			System.out.println("영화 이름: "+list.get(i).getName());
+			System.out.println("날짜: "+list.get(i).getDate());
+			System.out.println("시간: "+list.get(i).getTime());
+			System.out.print("자리: ");
+			for(String tmp: list.get(i).getSeat()) {
+				System.out.print(tmp+" ");
+			}
+			System.out.println();
+			System.out.println("인원: "+list.get(i).getPeople());
+			System.out.println("가격: "+list.get(i).getPrice());
+			total+=list.get(i).getPrice();
+			System.out.println();
+		}
+		System.out.printf("총 예매가격: %d원\n\n",total);
+	}
+	
+	public void cancelTicket(Scanner scan, ArrayList<MyTicket> list) {
+		if(list.size()==0) {
+			return;
+		}
+		System.out.println("예매를 취소하실 영화의 이름을 입력해주세요.");
+		String name=scan.next();
+		for(int i=0; i<list.size(); i++) {
+			if(name.equals(list.get(i).getName())){
+				list.remove(i);
+				System.out.println("예매 취소를 완료했습니다.");
+				return;
+			}
+		System.out.println("잘못된 입력입니다.");
+		}
+	}
+	
+	public void payments(int price, int people, int child ) {
+		Scanner scan=new Scanner(System.in);
+		people=mySelectPeople;
+		// 등급별 할인율 (VIP => 10%, GOLD => 5%, 일반Silver => 0%)
+		int qty = people - child; //아이를 뺀 사람 수
+		int rates = price * qty; //인원*가격
+		System.out.println("멤버쉽 카드가 있으시면 제시해 주세요.");
+		System.out.println("==== 할인율 ====");
+		System.out.println("1.[VIP]회원 => 10%, |2.[GOLD]회원 => 5% |3. 멤버쉽카드 없음(silver)");
+		System.out.println("------------------------------------------------------");
+		int grade = scan.nextInt(); //<get>
+		switch (grade) {
+		case 1 :
+			mySelectPrice=(int)(Math.round(rates-(rates*0.1)));
+			System.out.println("[VIP] 고객님이 결제하실 금액은 " + mySelectPrice + "원 입니다.");
+		 	break;
+		case 2 :
+			mySelectPrice=(int)(Math.round(rates-(rates*0.5)));
+			System.out.println("[GOLD] 고객님이 결제하실 금액은 " + mySelectPrice + "원 입니다.");
+			break;
+		case 3 :
+			mySelectPrice=(int)(Math.round(rates));
+			System.out.println("고객님이 결제하실 금액은 " + mySelectPrice + "원 입니다.");
+			break;
+		default:System.out.println("잘못된 메뉴 입니다.");
+			break;
+		      }
+		      
+		   }
+}

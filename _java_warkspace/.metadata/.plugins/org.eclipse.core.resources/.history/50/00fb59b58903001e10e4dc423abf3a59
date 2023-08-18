@@ -1,0 +1,31 @@
+package Day09;
+
+import java.util.Scanner;
+
+public class Method03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 printMulti(6);
+	}
+	
+	// 정수(2~9까지 중 하나) 해당 단의 구구단이 출력되는 메서드
+	//매개변수 : 메서드를 실행하기 위해서 외부에서 받아오는 값(7단 => int dan)
+	//리턴타입 : 메서드 처리 후 메인에게 다시 돌려주는 값
+	//메서드명 : printMulti
+public static void printMulti(int dan) {
+	//dan은 메인에서 주는 값 int dan=1
+	
+	/*Scanner scan=new Scanner(System.in);  //오답 : 메인 메서드에서 불러올때 어차피 몇단 할건지 입력하기때문에 필요 없음
+	System.out.println("정수를 입력하세요 : ");
+	num1=scan.nextInt();
+	*/
+	
+	
+	 for(int i=1;i<=9;i++) {
+		 System.out.println(dan+"*"+i+"="+(dan*i));
+	}
+		 
+	 
+}
+}

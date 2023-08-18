@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="zone">
+        <button type="button" id="btn1">엘리먼트 만들기</button><br>
+    </div>
+
+    <script>
+        document.getElementById('btn1').addEventListener('click', () => {
+            let zone = document.getElementById('zone');
+            zone.innerHTML += `<button type="button" id="btn2" onclick="h2Func()">생성된 버튼</button>`;
+            zone.innerHTML += `<h2 id="h2"></h2>`;
+
+        })
+        function h2Func() {
+            let h2 = document.getElementById('h2');
+            h2.innerText = `생성된 버튼을 클릭함`;
+        }
+    </script>
+
+</body>
+
+</html>

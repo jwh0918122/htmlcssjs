@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+        #h3{
+            display: flex;
+            height: 250px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        dir{
+            margin: 0;
+        }
+        h1{
+            text-align: center;
+        }
+        fieldset{
+            text-align: center;
+        }
+        .toggle{
+            display: none;
+        }
+        #textBox{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        구구단 2~9단 출력
+    </h1>
+    <fieldset>
+        <input type="text" id="textBox">
+        <button type="button" id="printBtn2">단 출력</button> 
+    <button type="button" id="printBtn">구구단 전체 출력</button>
+    </fieldset>
+    <h3 id="h3" class=""></h3>
+
+    <script>
+        // 구구단 전체 출력
+        document.getElementById('printBtn').addEventListener('click',
+        function(){    
+            h3.innerHTML=`<div>  </div>` //h3 초기화
+            for(let num1=2;num1<=9;num1++){
+                h3.innerHTML+=`<div clss="minibox">----${num1}단----<div>`;
+                for(let num2=1;num2<=9;num2++){
+                    h3.innerHTML+=`<div>${num1} * ${num2} = ${num1*num2}</div>`    
+                }
+            }
+        })
+
+         // textBox 단 출력
+        document.getElementById('printBtn2').addEventListener('click',
+        function(){
+            // document.getElementById('h3').classList.toggle("toggle");
+            h3.innerHTML=`<div>  </div>` //h3 초기화
+            let textBox = document.getElementById('textBox').value;
+
+            h3.innerHTML+=`<div id="textBox">---${textBox}단---</div>`    
+             for(let num2=1;num2<=9;num2++){
+                h3.innerHTML+=`<div id="textBox">${textBox} * ${num2} = ${textBox*num2}</div>`    
+                }
+        })
+
+    </script>
+</body>
+</html>

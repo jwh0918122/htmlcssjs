@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        데이터를 다룰 때 배열과 객체를 혼용하여 다루는 경우가 많음
+    </h1>
+    <ul>
+        <li>
+            배열안에 객체를 저장 그 객체 안에 다시 배열이 저장되어 있는 형태
+        </li>
+        <li>
+            이러한 조합의 형태에서는 for of, for in을 적절히 사용할 수 있어야 함
+        </li>
+        <li>
+            for of : 배열을 탐색(Array)
+            for(저장변수 of 배열)
+        </li>
+        <li>
+            for in : 객체를 탐색(Object)
+            for(키를 저장할 변수 in 객체){
+                객체명[키네임]; => value 추출
+            }
+        </li>
+        <li></li>
+    </ul>
+    
+    <script>
+        const memberObject = { //객체
+            name : 'kim',
+            age : 20,
+            married : false,
+            favors : ['coffee','game','movie','char','etc...'], //배열
+        }
+        console.log(memberObject)
+
+        /*people에 memberObject를 5명 추가*/
+        
+        // const people = []
+        // for(let i=0;i<5;i++){
+        //     people.push(memberObject);  
+        // }
+        // people[1].name = 'pack';
+        // people[2].name = 'hong';
+        // people[3].name = 'lee';
+        // people[4].name = 'choi';
+        // console.log(people);  
+        // 이러면 모든 배열의 객체의 name은 choi가 됨. 값을 바꾸려면 ↓
+
+        
+        
+       
+        //값을  바꾸려면
+        const people = []
+        for(let i=0;i<5;i++){
+            let copy = Object.assign({},memberObject); //빈 객체에 memverObject를 넣어줘
+            people.push(copy);
+       }
+        people[1].name = 'pack';
+        people[2].name = 'hong';
+        people[2].age = 27;
+        people[3].name = 'lee';
+        people[3].age = 30;
+        people[3].married = true;
+        people[4].name = 'choi';
+        
+        console.log(people);
+
+        console.log('----------------')
+        //people 배열 탐색 => for of
+        for(let copy of people){
+            console.log(copy); //각각의 object {}로 분리
+            //object 탐색 => for in
+            for(let keyName in copy){
+                if(keyName=='favors'){ 
+                    for(let favor of copy[keyName]){
+                        console.log(favor)
+                    }
+                }else{
+                    console.log(keyName);
+                    console.log(copy[keyName]);
+                }
+            }
+        }
+
+        console.log("--------------------")
+
+
+        /*Object를 생성해서 배열에 5개 복사하여 등록, 탐색*/  
+        //Object를 생성
+        const musician = {
+            name : 'IU',
+            age : 20,
+            addr : 'seoul',
+            playList : {
+                first : '너랑 나',
+                second : '좋은 날',
+                third : '밤편지'
+            },
+        };
+        
+        //배열에 Object 5개 복사
+        const muArr = [];  //빈 배열 생성
+        for(let i=0;i<5;i++){
+            let copy2 = Object.assign({},musician);
+            muArr.push(copy2)
+        }
+        console.log(muArr)
+
+        // 배열에 Object 일부 변경
+        muArr[1].name='에스파';
+        muArr[3].age=30;
+        
+        //탐색
+        for(let copy2 of muArr){ //배열 탐색
+            console.log('--muArr 배열 안 하나의 객체--');
+            console.log(copy2);//객체
+            for(let keyName in copy2){ //객체 탐색
+                if(keyName=='playList'){//playList는 velue가 객체
+                    for(let music in copy2[keyName]){ //객체 탐색
+                        console.log(copy2[keyName][music]) ;
+                    };
+                }else{
+                    console.log('keyName은 copy2객체의 key');    
+                console.log(copy2[keyName]);
+                }
+            }
+        }
+        
+    </script>
+</body>
+</html>

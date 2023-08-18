@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face{
+            font-family: jua;
+            src: url(/font/Jua-Regular.ttf);
+        }
+        body{
+            background-color: #2CBFB1;
+            font-family: jua;
+        }
+        div{
+            text-align: center;
+        }
+        div>h1{
+            font-size: 70px;
+        }
+        div>h2{
+            font-size: 40px
+        }
+        .menu{
+            width: 300px;
+            height: 400px;
+            border-radius: 15px;
+            background-color: white;
+            position: relative;
+            margin-bottom: 15px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .menu>h4{
+            position: absolute;;
+            top: 190px;
+            left: 50%;
+            transform: translate(-50%);
+            font-size: 20px;
+        }
+        .menu>p:nth-child(3){
+            
+            position: absolute;
+            top: 230px;
+            left: 50%;
+            transform: translate(-50%);
+            padding: 10px;
+        }
+        .menu>p:nth-child(4){
+            position: absolute;
+            top: 310px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .menu>p:last-child{
+            position: absolute;
+            top: 340px;
+            left: 50%;
+            transform: translate(-50%);
+            color: blue;
+            font-weight: 700;
+        }
+        .menu>div:first-child{
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        #초밥{
+            background-image: url(/image/음식/초밥.jpg);
+        }
+        #곱창{
+            background-image: url(/image/음식/곱창.jpg);
+            background-position: center;
+        }
+        #화채{
+            background-image: url(/image/음식/화채.jpg);
+        }
+
+        @keyframes logo_ani{
+            0%{right: 0px;}
+            50%{right: 30%;}
+            100%{right: 0px;}
+        }
+
+        .logo{
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+            width: 300px;
+            height: 300px;
+        }
+        .logo:hover{
+            animation-name: logo_ani;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+        
+       
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1>배달의 민족</h1>
+        <h2>넌 배달할 때가 제일 멋있어</h2>
+    </div>
+    <div class="menu">
+        <div id="초밥"></div>     
+            <h4>맛있는 초밥</h4>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 착한 가격!</p>  
+            <p><del>25,000원</del> 15,000원</p>
+            <p>바로 결제</p>        
+    </div>
+
+    <div class="menu">
+        <div id="곱창"></div>
+            <h4>맛있는 곱창</h4>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 착한 가격!</p>  
+            <p><del>25,000원</del> 15,000원</p>
+            <p>바로 결제</p>        
+             
+    </div>
+
+    <div class="menu">
+        <div id="화채">  </div> 
+            <h4>맛있는 화채</h4>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 착한 가격!</p>  
+            <p><del>25,000원</del> 15,000원</p>
+            <p>바로 결제</p>        
+          
+    </div>
+
+    <div><img src="/image/배민 로고.webp" alt="" class="logo"></div>
+</body>
+</html>

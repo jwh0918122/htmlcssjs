@@ -1,0 +1,71 @@
+@import url(reset.css); /*마진 초기화 css파일 임폴트해주기*/
+.container{
+    /* % : 부모가 기준 */
+    width: 100%;
+    /* vh : 모니터(브라우저) 높이 기준 */
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(/image/배경/room.jpg);
+    background-size: cover;
+}
+.container .header{
+    width: 90%;
+    height: 80px;
+    margin: 0 auto;
+    padding-top: 20px;
+    /*내 밑에 자식을 배치하기 쉽게해주는 거*/
+    display: flex; 
+    /*justify-content : 자식들 어떻게 배치할지 정하는거
+      space-between : 양쪽으로 갈라(첫번째 블록은 왼쪽으로 두번쨰는 오른쪽으로)*/
+    justify-content: space-between; 
+}
+.container .header h1 a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+.container .header .nav ul{
+    display: flex;
+    justify-content: space-between;
+}
+.container .header .nav ul li{
+    margin: 10px;
+}
+.container .header .nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 700; 
+}
+.container .header .nav ul li a:hover{
+    color: burlywood;
+}
+.container .main{
+    /* 전체 브라우저의 정 가운데 정렬*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+    text-align: center;
+    color: white;
+}
+.container .main h2{
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.container .main button{
+    background-color: transparent; /*버튼의 배경이 뒤에 있는 그림으로 반영*/
+    border: 2px solid green;
+    color: white;
+    font-weight: 700;
+    padding: 15px 20px; /*위:15px 아래:20px*/
+    font-size: 15px;
+    margin-top: 20px;
+    border-radius: 25px;
+    cursor: pointer; /*커서를 대면 손가락모양으로 바뀜*/
+    transition: 2s; /*밑에 버튼 호버효과가 2초동안 서서히 발생함*/
+}
+.container .main button:hover{
+    background-color: green;
+}

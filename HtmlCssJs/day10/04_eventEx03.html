@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="price" placeholder="가격">원 <br>
+    <input type="number" id="rate" placeholder="할인율">원 <br>
+    <button type="button" id="btn">계산</button>
+
+    <h2 id="h2"></h2>
+
+    <script>
+        //가격과 할인율을 입력받아 할인금액과 지불금액을 구하시오.
+        // ex : 50,000원 5%할인 할인금액 : 2,500 지불금액 47,500
+
+        document.getElementById('btn').addEventListener('click', 
+        function(){
+            let price = document.getElementById('price').value;
+            let rate = document.getElementById('rate').value;
+
+            let savePrice = price * (rate/100); //할인금액
+            let salePrice = price - savePrice; //지불금액
+
+            document.getElementById('h2').innerText = 
+           `가격 : ${price}, 할인율 : ${rate}%, 할인 금액 : ${savePrice}, 지불 금액 : ${salePrice}`;
+
+        });
+
+      
+        
+    </script>
+    
+</body>
+</html>

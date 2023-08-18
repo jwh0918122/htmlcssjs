@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hi{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>오늘은?</h1>
+    <button type="button" id="todayBtn" class="">today</button>
+    <h3 id="print">
+        <!-- 오늘 날짜와 요일을 출력 -->
+        <!-- 2023. 07. 31.(월) -->
+    </h3>
+
+    <script>
+        document.getElementById("todayBtn").addEventListener('click', 
+        function(){
+            document.getElementById('print').classList.toggle("hi"); //'hi'클래스가 있으면 빼고 , 없으면 넣어주세요
+            let today = new Date();
+            
+           let dayprint = today.getDay();
+           console.log(dayprint);
+            switch(dayprint){
+                case 0 : dayprint = "(일)"; 
+                case 1 : dayprint = "(월)"; 
+                case 2 : dayprint = "(화)"; 
+                case 3 : dayprint = "(수)"; 
+                case 4 : dayprint = "(목)"; 
+                case 5 : dayprint = "(금)"; 
+                case 6 : dayprint = "(토)"; 
+            }
+            document.getElementById('print').innerText=
+            `${today.toLocaleDateString()}${dayprint}`
+        })
+    </script>
+
+
+</body>
+</html>

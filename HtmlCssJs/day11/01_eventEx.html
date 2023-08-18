@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이구하기</title>
+</head>
+
+<body>
+    이름 : <input type="text" id="name"> <br>
+    주민번호 : <input type="text" id="rNum"> <br>
+    <button type="button" onclick="buttonFunc()">확인</button>
+
+    <h3>
+        <!-- 이름, 생년월일, 성별, 나이 -->
+    </h3>
+
+    <table>
+        <tr>
+            <th>이름</th>
+            <td id="nameVal"></td>
+        </tr>
+        <tr>
+            <th>생년월일</th>
+            <td id="birthVal"></td>
+        </tr>
+        <tr>
+            <th>성별</th>
+            <td id="genderVal"></td>
+        </tr>
+        <tr>
+            <th>나이</th>
+            <td id="ageVal"></td>
+        </tr>
+    </table>
+
+    <script>
+
+        function buttonFunc() {
+            let name = document.getElementById('name').value; //이름~~
+            console.log(name);
+            let rNum = document.getElementById('rNum').value; //주민번호
+
+            let birth = rNum.slice(0, 6); //생년월일(1~6자리 숫자)~~
+
+            let gender = (rNum.indexOf("-") + 1 == "1" || "3" ? "남" : "여"); //성별~~
+            // console.log(rNum.indexOf("-")+1);
+            let myBirthY1 = rNum.slice(0, 2) //97
+            let myBirthY2 = (myBirthY1.charAt(0) == "9" ? 19 + myBirthY1 : 20 + myBirthY1); //1997
+            // console.log(myBirthY1.charAt(0));
+            // console.log(myBirthY1, typeof myBirthY1);
+            // console.log(myBirthY2, typeof myBirthY2);
+
+
+            let now = new Date();
+            let myBirthYint = parseInt(myBirthY2);
+            let age = now.getFullYear() - myBirthYint //나이
+
+            console.log(`이름 : ${name}, 생년월일 : ${birth}, 성별 : ${gender}, `)
+
+            document.getElementById('nameVal').innerText = name;
+            document.getElementById('birthVal').innerText = birth;
+            document.getElementById('genderVal').innerText = gender;
+            document.getElementById('ageVal').innerText = age;
+        }
+        // //오늘날짜 리턴
+        // let now = new Date();
+        // console.log(now); //오늘 날짜
+        // console.log(now.getFullYear()); //오늘 날짜에서 연도만 추출
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+package 영화예매;
+
+public class Customer {
+   public String ID; //아이디
+   public String grade; //등급
+   public double discount; //할인율
+
+   public Customer() {
+
+   }
+
+   public Customer(String ID, String grade) {
+      this.ID = ID;
+      this.grade = grade;
+   }
+
+   private void initCustomer() {
+      this.grade = "Silver";
+   }
+
+}
+
+class Gold extends Customer {
+
+   public Gold() {
+   }
+
+   public Gold(String ID) {
+      super.ID = ID;
+      super.grade = "Gold";
+      super.discount = 0.1; 
+   }
+
+   // 가격 받아서 Gold등급 할인율 적용 후 다시 리턴
+   public int GoldPrice(int price) {
+      price = (int) (price - (price * discount));
+      
+      return price;
+   }
+
+}
+
+class VIP extends Customer {
+   public VIP() {
+   }
+
+   public VIP(String ID) {
+      super.ID = ID;
+      super.grade = "VIP";
+      super.discount = 0.2;
+   }
+
+   // 가격 받아서 VIP등급 할인율 적용 후 다시 리턴
+   public int VIPPrice(int price) {
+      price = (int) (price - (price * discount));
+      
+      return price;
+
+   }
+
+}

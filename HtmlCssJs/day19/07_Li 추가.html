@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제1</title>
+</head>
+
+<body>
+    <button type="button" id="liPrint1">Li Tag 한번에 추가하기</button>
+    <button type="button" id="liPrint2">Li Tag 하나씩 추가하기</button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <ul id="ul1"></ul>
+    <hr>
+    <ol id="ol1"></ol>
+    <hr>
+
+    <script>
+        const arr = ['HTML', 'CSS', 'javascript', 'SQL'];
+
+        //liPrint1 버튼(한번에)
+        let tmp = 0;
+        document.getElementById('liPrint1').addEventListener('click', () => {
+            let ul1 = document.getElementById('ul1');
+            ul1.innerHTML = ``; //초기화
+
+            for (let i = 0; i < arr.length; i++) {
+                ul1.innerHTML += `<li>${arr[i]}</li>`;
+            }
+
+            //tmp가 0이면 보이고 -1이면 안보이기
+            if (tmp == 0) {
+                ul1.style.display = "block";
+                tmp = -1;
+            } else {
+                ul1.style.display = "none";
+                tmp = 0;
+            }
+        })
+
+        //liPrint2 버튼(하나씩)
+        let cnt = 0;
+        document.getElementById('liPrint2').addEventListener('click', () => {
+            let ol1 = document.getElementById('ol1');
+
+            if (cnt < 4) {
+                ol1.innerHTML += `<li>${arr[cnt]}</li>`;
+                cnt++;
+            } else {
+                cnt = 0; //초기화
+                ol1.innerHTML = ``; //초기화
+            }
+        })
+    </script>
+</body>
+
+</html>

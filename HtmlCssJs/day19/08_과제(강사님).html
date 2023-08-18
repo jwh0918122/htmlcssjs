@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img id="introimg" src="" alt="">
+
+    <script>
+        let imgArray = ['cat1', 'cat2', 'cat3', 'cat4'];
+
+        function showImage() {
+            let imgNum = Math.round(Math.random() * 3);
+            console.log(imgNum);
+            let objImg = document.getElementById("introimg");
+            objImg.src = `/image/동물/${imgArray[imgNum]}.jpg`;
+
+            setTimeout(showImage, 1000);
+        }
+        showImage();
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

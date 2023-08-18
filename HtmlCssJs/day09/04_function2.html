@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        함수의 파라미터 / 리턴 타입 사용
+    </h1>
+    <ul>
+        <li>
+            파라미터의 개수는 제한이 없으나 많으면 관리가 힘듬
+        </li>
+        <li>
+            파라미터의 타입은 제한이 없지만 전달된 타입을 그대로 받아서 사용
+        </li>
+        <li>
+            파라미터의 변수명을 지정할 때 외부의 변수명과 중복되어도 상관 없다.
+        </li>
+        <li>
+            함수의 리턴 유무에 따라 값을 돌려 받을 수 있고, 종료 시점도 결정
+        </li>
+    </ul>
+    <script>
+        let name = "홍길순";
+        
+        function callName(herName){
+            let hisName = "홍길동";
+            console.log("여자친구의 이름은 : "+herName);
+            console.log("남자친구의 이름은 : "+hisName);
+            console.log("다른 여자친구 : "+name);
+        }
+        callName("김영희");
+        callName(name);
+        // consol.log(hisName);  => 함수 안에서 선언된 변수는 함수 밖에서는 사용 불가
+        
+        console.log('-------------------')
+
+        function returnFunc(num1, num2){
+            let result = num1 + num2;
+            return result;
+        }
+        
+        let sum = returnFunc(10,20);  //returnFunc의 result를 받을 변수를 만들어 줘야함(let sum)
+        console.log(sum);
+        console.log(`sum : ${returnFunc(10,20)}`); //이렇게 많이 씀(이러면 변수 안 만들어도 됨)
+        
+        // 표현식 함수
+        const myFunc = function(myName){
+            console.log("내 이름은...");
+            return 'Hello~!!' + myName;  //담을 변수(myFunc)이 있으니까 당연히 return값이 있어야 함
+        }
+        myFunc('홍길동'); //이러면 return값(Hello~!! + myName)은 안나옴
+
+        console.log(myFunc("홍길동")); //이렇게 해야 return값까지 같이 나옴
+
+        // 화살표 함수(Arrow Function): 코드 량을 줄이기 위해 사용
+        console.log('-----Arrow Function-----')
+        
+        const arrowFunc = (param1, param2) =>{
+            let result = param1 + param2;
+            return result;
+        }
+        let arrow1 = arrowFunc(10,20);
+        console.log(arrow1);
+
+
+    
+    </script>
+</body>
+</html>

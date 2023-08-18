@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+</head>
+<body>
+    <h1>수학 관련 함수 / 랜덤 함수</h1>
+    <ul>
+        <li>
+            수학 관련 함수 : java와 동일함
+        </li>
+        <li>
+            Math.round():반올림, Math.ceil():올림, Math.floor():버림
+            Math.random(), Math.max(), Math.min() 등등
+        </li>
+        <li>
+            Math.random() : 0(포함)~1(미포함) 사이의 난수를 무작위 리턴
+            Math.floor(Math.random() * 개수)+시작;  =>정수로 무작위 리턴
+        </li>
+        <li>
+            범위에 대한 random수 구하는 공식(min, max)
+            Math.floor(Math.random()*(max-min+1))+min;
+        </li>
+    </ul>
+
+    <script>
+        // 0~9까지의 랜덤 수 생성
+        let num = Math.floor(Math.random()*10)+0;
+        console.log(num);
+
+        /*파라미터 min, max 값을 받아서 해당 범위의 랜덤 값을 리턴하는 함수를 생성하고, 콘솔에 찍어주세요.*/
+
+        function func1(min, max){
+            let random = Math.floor(Math.random()*(max-min+1))+min;
+            return random;
+        }
+
+        console.log(func1(4,6));
+
+        //강사님
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min+1))+min;
+        }
+        console.log(getRandom(1,100));
+
+
+        /*형변환*/
+
+        //문자 -> 숫자 (string -> number)
+        //Number(), parsInt(), parsFloat()
+
+        //숫자 -> 문자 (Number -> string)
+        //124.toString();
+
+        //문자 -> 불리언
+        //Boolean('true');
+
+        //불리언 -> 문자
+        //String(true);
+
+        
+
+    </script>
+
+
+
+
+
+</body>
+</html>

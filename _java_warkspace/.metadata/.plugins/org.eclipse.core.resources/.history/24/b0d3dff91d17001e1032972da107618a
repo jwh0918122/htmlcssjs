@@ -1,0 +1,61 @@
+package 영화예매;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Grade {
+   private ArrayList<Gold> goldList = new ArrayList<>(); //Gold클래스 객체 리스트로 받음
+   private ArrayList<VIP> vipList = new ArrayList<>(); //VIP클래스 객체 리스트로 받음
+   
+   
+   public Grade() {}
+   
+   public Grade(ArrayList<Gold> goldList, ArrayList<VIP> vipList) {
+      super();
+      this.goldList = goldList;
+      this.vipList = vipList;
+   }
+   
+   //회원 등급 정보
+   public void GradeAdd() {
+      goldList.add(new Gold("g1"));
+      goldList.add(new Gold("g2"));
+      vipList.add(new VIP("v1"));
+      vipList.add(new VIP("v2"));
+   }
+   // 등급 확인 메서드
+   public void grade(Scanner scan) {
+      
+      // Gold인지 확인      
+      String id = scan.next();
+      if(!id.equals("n")&&!id.equals("N")) {
+      for (Gold tmp : goldList) {
+         if (tmp.ID.equals(id)) {
+            System.out.println(tmp.ID + "님의 등급은 'Gold'입니다.");
+            Gold gol=new Gold();
+            return;
+         }
+      }
+      // VIP인지 확인
+      for (VIP tmp : vipList) {
+         if (tmp.ID.equals(id)) {
+            System.out.println(tmp.ID + "님의 등급은 'VIP'입니다.");
+            return;
+         }
+      }
+      System.out.println(id+"님의 등급은 'Silver'입니다.");
+      }
+   }
+   public ArrayList<Gold> getGoldList() {
+      return goldList;
+   }
+   public void setGoldList(ArrayList<Gold> goldList) {
+      this.goldList = goldList;
+   }
+   public ArrayList<VIP> getVipList() {
+      return vipList;
+   }
+   public void setVipList(ArrayList<VIP> vipList) {
+      this.vipList = vipList;
+   }
+}

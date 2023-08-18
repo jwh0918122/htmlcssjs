@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        @keyframes animation1{
+            
+            0%{
+                left: 0%;
+            }
+            50%{
+                left: 90%;  
+            }
+            100%{
+                left: 0%;
+            }
+            
+        }
+        .box{
+           
+            animation-name: animation1;
+            animation-duration: 3s;
+            animation-iteration-count: 2;
+            width: 50px;
+            height: 50px;
+            background-color: antiquewhite;
+            position: absolute;
+        }
+    </style>
+   
+
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

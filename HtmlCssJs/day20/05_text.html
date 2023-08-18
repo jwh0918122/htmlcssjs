@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ... (스타일 등) ... -->
+</head>
+
+<body>
+    <div class="calculator">
+        <form name="forms">
+            <input type="text" id="output" name="output">
+            <!-- 버튼 id 수정 -->
+            <button type="button" class="clear" value="C" id="cl">C</button>
+            <button type="button" class="operator" value="/" id="oper_div">/</button>
+            <!-- ... (나머지 버튼) ... -->
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let num1 = [];
+            let num2 = [];
+            let result = 0;
+            let operator = '';
+
+            const output = document.getElementById('output');
+
+            const buttons = document.querySelectorAll('.number, .operator, .dot, .clear, .result');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const value = button.value;
+
+                    if (value === 'C') {
+                        num1 = [];
+                        num2 = [];
+                        result = 0;
+                        output.value = '';
+                    } else if (value === '+' || value === '-' || value === '*' || value === '/') {
+                        operator = value;
+                        output.value += operator;
+                    } else if (value === '.') {
+                        if (!output.value.includes('.')) {
+                            output.value += value;
+                        }
+                    } else if (value === '=') {
+                        if (num1.length > 0 && num2.length > 0 && operator) {
+                            const num1Value = parseFloat(num1.join(''));
+                            const num2Value = parseFloat(num2.join(''));
+
+                            switch (operator) {
+                                case '+':
+                                    result = num1Value + num2Value;
+                                    break;
+                                case '-':
+                                    result = num1Value - num2Value;
+                                    break;
+                                case '*':
+                                    result = num1Value * num2Value;
+                                    break;
+                                case '/':
+                                    result = num1Value / num2Value;
+                                    break;
+                            }
+
+                            output.value = result;
+                            num1 = [result];
+                            num2 = [];
+                            operator = '';
+                        }
+                    } else {
+                        if (!operator) {
+                            num1.push(value);
+                        } else {
+                            num2.push(value);
+                        }
+                        output.value += value;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

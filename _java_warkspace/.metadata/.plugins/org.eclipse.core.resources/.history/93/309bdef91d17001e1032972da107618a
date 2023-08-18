@@ -1,0 +1,74 @@
+package 영화예매;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Manager {
+	final private int password = 1234;
+
+	// 관리자 비밀번호 받는 메서드
+	public boolean passwordScan(Scanner scan) {
+
+		System.out.println("관리자 비밀번호를 입력하세요 : ");
+		int num = scan.nextInt();
+		if (this.password == num) {
+			return true;
+		}
+		System.out.println("비밀번호가 일치하지 않습니다.");
+		return false;
+
+	}
+
+	// 영화 추가
+	public void movieAdd(Scanner scan,예매매니저 a) {
+		System.out.println("추가하실 영화의 이름을 입력하세요 : ");
+		String movie = scan.next();
+
+//		a.getList().getMovieList();
+		a.getList().영화리스트();// 영화 이름 넣어놓은거
+		for (영화 tmp : a.getList().getMovieList()) {
+			if (tmp.getName().equals(movie)) {
+				System.out.println("이미 등록되어 있는 영화입니다.");
+				return;
+			}
+		}
+		영화 b = new 영화(movie);
+		a.list.getMovieList().add(b);
+
+
+	}
+
+	// 영화 삭제
+	public void movieDelete(Scanner scan, 예매매니저 a) {
+		System.out.println("삭제하실 영화의 이름을 입력하세요 : ");
+		String movie = scan.next();
+
+		a.getList().getMovieList();
+		a.getList().영화리스트(); // 영화 이름 넣어놓은거
+		
+		for(int i=0;i<a.getList().getMovieList().size();i++) {
+			if (a.getList().getMovieList().get(i).equals(movie)) {
+				a.getList().getMovieList().remove(i);
+				return;
+			}
+		}
+//		for (영화 tmp : a.list.getMovieList()) {
+//			if (tmp.getName().equals(movie)) {
+//				a.list.getMovieList().remove(movie);
+////				a.getMovieList().remove(movie);
+//				return;
+//			}
+//		}
+
+	}
+
+	// 영화 리스트
+	public void moviePrint(예매매니저 a) {
+		a.getList().getMovieList();
+		a.getList().영화리스트(); // 영화 이름 넣어놓은거
+		for (영화 tmp : a.getList().getMovieList()) {
+			System.out.println(tmp.getName());
+		}
+	}
+
+}

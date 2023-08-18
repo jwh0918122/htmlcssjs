@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        객체 : 식별할 수 있는 것을 상세 특징으로 표현하려는 형식
+    </h1>
+    <ul>
+        <li>
+            const로 선언하는 것이 일반적 : 객체의 지속성을 유지하고, 확보하기 위함
+        </li>
+        <li>
+            { } 속성명 : 속셩값, 속성명 : 속성값,... 표현
+        </li>
+        <li>
+            같은 객체 내에서 속성명은 중복되면 안됨. (고유한 키)
+        </li>
+        <li>
+            객체 내부의 속성 값으로 사용될 수 있는 데이터의 타입은 제한이 없다.
+        </li>
+        <li>
+            객체의 속성 값으로 익명 함수를 정의 => 그 함수를 메서드라고 부른다.
+            메서드 이름은 속성명이 됨
+        </li>
+    </ul>
+    <script>
+        const car = { name: 'myCar', year: 2023 };
+        console.log(car);
+        // car = 100;  => 재할당이 불가능 함.
+
+        let myCar = { name: 'superCar', year: 2023 }; // 가능은 하지만 일반적으로 사용하지 않음.
+        myCar = 100;
+        console.log(myCar);
+        //myCar의 객체는 사라짐=>객체를 활용 하려고 했던 목적이 사라짐.
+    </script>
+    <script>
+        const me = {
+            name: '장원희',
+            age: 20,
+            addr: '인천',
+            isDeveloper: true,
+            'hobby': 'game',
+            'myFaver': 'game',
+            avail: {
+                year: 2020,
+                title: 'java script',
+                ver: 'WS6+',
+                project: 'Back-End',
+                intro: function () {
+                    console.log(`${me.avail.title} : ${me.avail.ver}`);
+                    return `re: ${this.title} : ${this.ver}`;
+                }
+            },
+            year: 2023
+        };
+
+        console.log('---여기----');
+        console.log(me.name);
+
+        ; console.log(me);
+        console.log(me.name);
+        console.log(me.year);
+        console.log(me.avail.year);
+        console.log(me.avail.title);
+        console.log(me.avail.ver);
+        console.log(me.avail.intro);  //함수를 지목(실행하는게 아님)
+        console.log(me.avail.intro());  //함수를 실행
+
+        console.log('--------------');
+
+
+        console.log(me['addr']);
+        console.log(me['hobby']);
+        console.log(me['avail']['title']); // . 대신 [ ] 사용(대신 텍스트여야함)....??
+        // console.log(me['avail]['intro']());
+
+        let keyName = 'addr';
+        console.log(me[keyName]);
+
+        console.log(me['avail'].title);
+    </script>
+    <script>
+        console.log('-----객체 생성 : 좋아하는 가수의 인적 사항, 가수의 플레이리스트 3곡---------');
+
+        //객체 생성 : 좋아하는 가수의 인적 사항, 가수의 플레이리스트 3곡
+        //이름, 나이, 주소, 플레이리스트(객체로 3곡)
+        //함수로 3곡(플레이리스트의 곡을 콘솔에 출력)
+        const singer = {
+            name: "아이유",
+            age: 20,
+            addr: "서울",
+            playList: {
+                music1: "좋은날",
+                music2: "분홍신",
+                music3: "밤편지",
+                playListPrint: function () {
+                    // console.log(`playList : ${singer.playList.music1}, ${singer.playList.music2}, ${singer.playList.music3}`);
+                    return `playList : ${singer.playList.music1}, ${singer.playList.music2}, ${singer.playList.music3}`;
+                }
+            },
+            print: function () {
+                // console.log(`가수 이름:${singer.name}, 나이:${singer.age}, 주소:${singer.addr}`);
+                return `이름:${singer.name}, 나이:${singer.age}, 주소:${singer.addr}`;
+            }
+        };
+        console.log(singer);
+
+        console.log(singer.print());
+        console.log(singer.playList.playListPrint());
+
+
+        console.log('-------강사님-------');
+        //강사님
+        const musivian = {
+            name: 'IU',
+            age: 20,
+            addr: 'seoul',
+            playList: {
+                first: '너랑 나',
+                second: '좋은 날',
+                third: '밤편지'
+            },
+            jukebox: function (f, s, t) {
+                console.log(`${this.playList.first}, ${this.playList.second}, ${this.playList.third}`);
+                return `re: ${f}, ${s}, ${t}`;  //매개변수로 받아서 리턴
+            }
+        };
+        let first = '아이유 노래 1'
+        let second = '아이유 노래 2'
+        let third = '아이유 노래 3'
+        console.log(musivian);
+        console.log(musivian.name);
+        console.log(musivian.playList.first);
+        // console.log(musivian.jukebox('aaa','bbb','ccc'));
+        console.log(musivian.jukebox(first, second, third)); //매개 변수 출력
+    </script>
+</body>
+
+</html>

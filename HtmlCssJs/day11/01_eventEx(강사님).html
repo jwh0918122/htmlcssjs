@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이구하기</title>
+</head>
+<body>
+    이름 : <input type="text" id="name"> <br>
+    주민번호 : <input type="text" id="rNum"> <br>
+    <button type="button" onclick="result()">확인</button>
+
+    <h3 id="h3">
+        <!-- 이름, 생년월일, 성별, 나이 -->
+    </h3>
+
+    <table>
+    <script>
+
+        function result(){
+            // //오늘날짜 리턴
+            let now = new Date();
+            console.log(now.getFullYear()); //오늘 날짜에서 연도만 추출
+            // let name = document.getElementById('name'); // 객체 자체를 저장 => <input type="text" id="name">
+            let name = document.getElementById('name').value; //이름
+            let rNum = document.getElementById('rNum').value; //주민번호
+
+            let birth = rNum.substring(0,rNum.indexOf("-")); //생년월일
+
+            let getNum = rNum.charAt(rNum.indexOf("-")+1); //성별 번호
+            let wm = (getNum=="1" || getNum=="3"?"남":"여"); //성별
+
+            let year = parseInt(birth.substring(0,2)); //97
+            let age = (getNum<=2)? now.getFullYear()-(1900+year): now.getFullYear()-(2000+year);
+           
+            document.getElementById(h3).innerText=
+            `이름 : ${name}, 생년월일 : ${birth}, 성별 : ${wm}, 나이 : ${age} `
+        
+         }
+
+         //오늘 날짜 반환
+         let today = new Date();
+         console.log(typeof today); //object 타입임
+         console.log(today.getFullYear()); //년도
+         console.log(today.getMonth()+1); //월(0부터 시작(0~11월)해서 +1해줘야 함)
+         console.log(today.getDate()); //일 (1~31)
+         console.log(today.getDay()); //요일 0(일)~6(토)
+
+         //getHours, minutes, seconds : 시분초 추출
+         let today2 = today.toLocaleDateString(); //2023. 7. 31  => 현재 날짜
+         console.log(today2)
+         let time = today.toLocaleTimeString(); //오후 5:58:51  => 현재 시간
+         console.log(time)
+         console.log(today.toLocaleString()); //2023. 7. 31. 오후 5:58:51  => 현재 날짜 및 시간
+        
+            
+
+
+
+    </script>
+</body>
+</html>

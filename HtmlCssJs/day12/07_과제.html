@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset{
+            text-align: center;
+        }
+        #text{
+            font-weight: 700;
+            text-align: center;
+        }
+        #reset{
+          font-size: 30px;
+          background-color: white;
+          border: 0.5px solid black;
+          margin-top: 10px;
+          border-radius: 5px;
+        }
+        #reset:hover{
+            background-color: yellow;
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- 가위바위보 게임
+    컴퓨터가 가위1, 바위2, 보3 중 하나를 정하면 나도 가위, 바위, 보 중 하나를 선택 게임 -->
+    <!-- 가위 바위 보는 버튼
+    승패에 대한 결과를 출력. 총 5번 횟수
+    컴퓨터는 랜덤으로 가위, 바위, 보 중 하나를 선택
+    승률 : (이긴 횟수 / 전체 경기 수) * 100 -->
+
+    <fieldset>
+        <legend>가위바위보</legend>
+    <button type="button" onclick="play(1);">
+        <img src="/image/기타/가위.jpg" alt="">
+    </button> 
+
+    <button type="button" onclick="play(2);">
+        <img src="/image/기타/바위.jpg" alt="">
+    </button>
+
+    <button type="button" onclick="play(3);">
+        <img src="/image/기타/보.jpg" alt=""> 
+    </button><br>
+
+    <button type="button" id="reset">초기화</button>
+    </fieldset>
+    <div id="text"></div>
+    <script>
+        
+        
+        let sumWin=0; //이긴 전적
+            let sumDraw=0; //무승부 전적
+            let sumLose=0; //진 전적
+            let count = 0; //가위바위보한 횟수
+            
+            function play(user){
+                count++;  //가위바위보한 횟수 누적
+                let com=Math.floor((Math.random()*3)+1); //com
+                let comStr="";
+                let userStr="";
+                let win =0; //승
+                let draw = 0; //무
+                let lose =0; //패   
+                
+                switch(user){ //user
+                    case 1 : //가위
+                        com==1? draw++:com==2? lose++:win++;
+                        break;
+                        case 2 : //바위
+                        com==2? draw++:com==3? lose++:win++;
+                        break;
+                        case 3 : //보
+                        com==3? draw++:com==1? lose++:win++;
+                        break;
+                    }
+                    switch(user){ //userStr
+                        case 1 :
+                            userStr="가위";
+                        break;
+                    case 2 : 
+                    userStr="바위";
+                    break;
+                    case 3 : 
+                    userStr="보";
+                    break;
+                }
+                
+                switch(com){ //comStr
+                    case 1 : 
+                    comStr="가위";
+                    break;
+                    case 2 : 
+                    comStr="바위";
+                    break;
+                    case 3 : 
+                    comStr="보";
+                    break;
+                }
+                
+                //승패 전적 누적 시키기
+                sumWin=sumWin+win;
+                sumDraw=sumDraw+draw;
+                sumLose=sumLose+lose;
+                
+                // console.log(`com : ${comStr} / user : ${userStr}`)
+                // console.log(`win : ${win} / draw : ${draw} / lose : ${lose}`)
+           
+                document.getElementById('text').innerHTML=
+                `<p>당신 : ${userStr} </p>
+                <p>컴퓨터 : ${comStr} </p>
+                <p>${(win==1?"이겼습니다.":lose==1?"졌습니다.":"무승부 입니다.")} </p>
+                <p><현재 전적></p>
+                <p>승 : ${sumWin} </p>
+                <p>무 : ${sumDraw} </p>
+                <p>패 : ${sumLose} </p>
+                <p>승률 : ${((sumWin/count)*100).toPrecision(4)}%</p>`
+                
+            }
+            //reset버튼
+            document.getElementById('reset').addEventListener('click',()=>{
+                sumWin = 0;
+                sumDraw = 0;
+                sumLose = 0;
+                count = 0;
+
+                document.getElementById('text').innerHTML = 
+                `<p>현재 전적</p>
+                <p>승 : ${sumWin} </p>
+                <p>무 : ${sumDraw} </p>
+                <p>패 : ${sumLose} </p>
+                <p>승률 : ${(0).toPrecision(4)}%</p>`
+            })
+            </script>
+    
+</body>
+</html>

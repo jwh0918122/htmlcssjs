@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>가위 바위 보 게임 10번의 승률 출력</h3>
+    <button type="button" id="btn">승률 출력</button>
+    <h3>
+         10게임의 승률은 <span id="result"></span> % 입니다.
+    </h3>
+    
+    <script>
+        //가위 바위 보는 com => 랜덤, player => 랜덤
+        //승률 계산 : (승리/(10-무승부))*100  => 10번 중 3번 이기면 30%
+        //1=가위, 2=바위, 3=보
+
+        document.getElementById('btn').addEventListener('click',()=>{
+            let com = 0;
+            let player = 0;
+            let w = 0; //승
+            let f = 0; //패
+            let m = 0; //무
+            let r = 0; //승률
+            for(let i=1;i<=10;i++){
+                // com = Math.floor(Math.random()*3)+1; //컴퓨터
+                // player = Math.floor(Math.random()*3)+1; //플레이어
+               com = Math.floor(Math.random()*(3-1+1))+1;
+               player = Math.floor(Math.random()*(3-1+1))+1;
+
+               console.log(`com : ${com} / player : ${player}`)
+                
+                switch(player){
+                    case 1 : //가위
+                    player = "가위";
+                    if(com==1){
+                        com="가위";
+                        m++;
+                        }else if(com==2){
+                            com="바위";
+                            f++;
+                        }else{
+                            com="보"
+                            w++;
+                        }
+                        break;
+                        case 2 : //바위
+                        player = "바위";
+                        if(com==1){
+                            com="가위";
+                            w++;
+                        }else if(com==2){
+                            com="바위";
+                            m++;
+                        }else{
+                            com="보"
+                            f++;
+                        }
+                        break;
+                        case 3 : //보
+                            player = "보";
+                            if(com==1){
+                                com="가위";
+                                f++;
+                            }else if(com==2){
+                                com="바위";
+                                w++;
+                            }else{
+                                com="보"
+                                m++;
+                        }
+                        break;
+                    }
+                    document.getElementById('')
+                    console.log(`com : ${com} / player : ${player} / 승 : ${w} / 패 : ${f} / 무 : ${m} }` )
+                }
+                // let r = (w/(10-m))*100 //승률
+                r = (parseInt(w)/(10-parseInt(m)))*100; //승률
+                console.log(`승률 : ${r}%`)
+                document.getElementById('result').innerHTML=`${r}`;
+            })
+            </script>
+
+</body>
+</html>

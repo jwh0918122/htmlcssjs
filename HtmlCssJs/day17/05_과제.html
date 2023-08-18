@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #hero {
+            display: inline-block;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <header id="header"></header>
+
+    <div id="mid"></div>
+
+    <section id="section"></section>
+
+
+
+    <script>
+
+        let header = document.getElementById('header');
+        let min = document.getElementById('mid');
+
+
+        a();
+        async function a() {
+
+            let resp = await fetch(`https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json`) //경로
+            let resp2 = await resp.json();
+            console.log(resp2);
+
+            header.innerHTML = `<h1>${resp2.squadName}</h1>`;
+            min.innerHTML = `<h3>Hometown : ${resp2.homeTown} formed : </h3>`;
+
+            for (let i = 0; i < resp2.members.length; i++) {
+                section.innerHTML += `<div id="hero">`;
+                section.innerHTML += `<div>${resp2.members[i].name}</div>`;
+                section.innerHTML += `<div>SecretIdentity : ${resp2.members[i].secretIdentity}</div>`;
+                section.innerHTML += `<div>Age : ${resp2.members[i].age}</div>`;
+                section.innerHTML += `<div>Superpowers :<ul id="ul${i}"></ul></div>`;
+                section.innerHTML += `</div>`;
+
+
+                for (let j = 0; j < resp2.members[i].powers.length; j++) {
+                    console.log(resp2.members[i].powers[j]);
+                    document.getElementById(`ul${i}`).innerHTML += `<li>${resp2.members[i].powers[j]}</li>`;
+
+                }
+
+
+            }
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

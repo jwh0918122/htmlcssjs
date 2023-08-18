@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        구구단 2~9단 출력
+    </h1>
+  
+    <button type="button" id="btn">구구단 전체 출력</button>
+
+    <h3 id="gugu" class=""></h3>
+    <!-- 
+        2*1=2   3*1=3... 9*1=9
+        2*2=4   3*2=6... 9*2=18
+     -->
+    
+    <script>
+        document.getElementById('btn').addEventListener('click',()=>{
+            let str = `<table>`;
+            let incre = 1;
+            while(incre < 10){
+                let dan = 2;
+                str += `<tr>`;
+                    while(dan < 10){
+                        str += `<td>${dan}*${incre}=${dan*incre}</td>`; //2*1=2
+                        dan++; // 단 증가(a*b=c의 a증가)
+                    }
+                    incre++;
+                    str+=`</tr>`
+            }
+                str += `</table>`;
+                document.getElementById('gugu').innerHTML=str;
+        })
+    </script>
+</body>
+</html>

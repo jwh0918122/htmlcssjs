@@ -1,0 +1,42 @@
+package 프로그래머스;
+
+import java.util.ArrayList;
+
+public class 프로그래머스 {
+	public static void main(String[] args) {
+		Solution s = new Solution();
+		int [] r = s.solution(10);
+		
+		for(int tmp : r) {
+			System.out.println(tmp+" ");
+		}
+
+		
+	}
+}
+
+class Solution {
+    public int [] solution(int n) {
+        ArrayList <Integer>answer2 = new ArrayList();
+       
+      do {
+    	  answer2.add(n);
+    	  
+    	  
+    	  if(n%2==0) {
+    		  n=n/2;
+    	  }else {
+    		  n=3*n+1;
+    	  }
+    	  
+      }while(n!=1);
+      answer2.add(1);
+        int[] answer = new int[answer2.size()];
+        int cnt=0;
+        for(int tmp : answer2) {
+        	answer[cnt]=tmp;
+        	cnt++;
+        }
+        return answer;
+    }
+}
